@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
+
+
+
+
+html, body { height: 100%; }
+body {
+     margin: 0; 
+     font-family: Roboto, "Helvetica Neue", sans-serif;
+     color: rgb(46, 46, 46);
+     width: 100vw;
+     overflow-x: hidden;
+
+     .light-text {
+         color: #808080;
+     }
+
+     .medium-text {
+        color: #061A3A;
+     }
+
+
+     .dark-text {
+         color: #212529;
+     }
+
+
+     .header-font {
+        font-family: 'Crimson Text', serif;
+     }
+
+
+     .underline  {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 30%;
+            height: 3px;
+            left: 0;
+            bottom: 0;
+            background-color: #c2185b;
+        }
+    }
+ }

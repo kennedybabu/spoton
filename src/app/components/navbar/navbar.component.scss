@@ -1,0 +1,66 @@
+.container-fluid {
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    right: 0;
+    background-color: #f7f7f7;
+    z-index: 2;
+
+    .row {
+        height: 100%;
+        width: 100%;
+        justify-content: space-between;
+
+        div {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            #toggleButton {
+                border: none;
+                background-color: transparent;
+                display: none;
+            }
+
+            mat-menu {
+
+                button:hover {
+                    color: #c2185b!important;
+                }
+            }
+
+        }
+    }
+}
+
+
+@media screen and (max-width: 770px){ 
+    .container-fluid {   
+    
+        .row {
+            height: 100%;
+            width: 100%;
+            
+            #nav-list {
+                display:none;
+            }   
+
+
+            div {
+                flex-direction: row!important;
+                justify-content: space-between;
+                
+
+                #toggleButton {
+                    display: block;
+                    order: 2;
+                }
+    
+            }
+        }
+    }
+
+}

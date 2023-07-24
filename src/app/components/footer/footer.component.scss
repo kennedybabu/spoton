@@ -1,0 +1,46 @@
+.container {
+    width: 100vw;
+    overflow-x: hidden;
+    padding: 2rem;
+    height: auto;
+
+
+    .row {
+
+
+        .col-2 {
+
+            h2  {
+                position: relative;
+
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 30%;
+                    height: 3px;
+                    left: 0;
+                    bottom: 0;
+                    background-color: #c2185b;
+                }
+            }
+
+            
+            ul {
+                padding-left: 0;
+
+                li {
+                    list-style-type: none;
+                    padding-left: 0;
+                    margin: 12px 0;
+                    cursor: pointer;
+                    transition: all ease .2s;
+                }
+
+                li:hover {
+                    color: #c2185b;
+                }
+            }
+        }
+    }
+}

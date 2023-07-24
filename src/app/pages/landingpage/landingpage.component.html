@@ -1,0 +1,415 @@
+<div class="container-fluid wrapper p-0">
+    <div class="container-fluid bg">
+        <div class="row">
+            <div class="d-flex header-font  flex-column justify-content-center mx-auto" style="color: rgb(238, 238, 238);height: 100%;max-width: 1162px;">
+                <h1 class="header-font" style="font-weight: 700;font-size: 70px;line-height: 70px;">Explore, <br> Your Travel</h1>
+                <p style="font-size: 20px;">Discover your next great adventure, become an explorer to get started!</p>
+            </div>
+        </div>
+
+        <!-- controls -->
+        <div class="filter-container container" style="color: rgb(51, 51, 51);">
+            <div class="row justify-content-center p-2">
+                <div class="col-6 col-md-2">
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input placeholder="All" class="form-control mx-2" style="border-radius: 0;" type="text" name="location" id="location">
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="form-group">
+                        <label for="categories">categories</label>
+                        <input placeholder="All" class="form-control mx-2" style="border-radius: 0;" type="text" name="categories" id="categories">
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input placeholder="All" class="form-control mx-2" style="border-radius: 0;" type="text" name="location" id="location">
+                    </div>
+                </div>
+                <div class="col-6 col-md-2 d-flex flex-column text-start">
+                    <mat-card-content class="d-flex align-items-center">                         
+                        <label class="mx-1">Persons:{{value}}</label>
+                 
+                        <mat-slider
+                            class="example-margin"
+                            [max]="max"
+                            [min]="min"
+                            [step]="step"
+                            [discrete]="thumbLabel"
+                            [showTickMarks]="showTicks">
+                          <input matSliderThumb [(ngModel)]="value">
+                        </mat-slider>
+                      </mat-card-content>
+                </div>
+                <div class="col-md-2">
+                    <button mat-raised-button color="primary">submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid dark-text" >
+        <div class="row pt-3 shadow-sm rounded-sm justify-content-center" id="why-section">
+            <div class="row" style="padding-top: 5rem;">
+                <small class="ligh-text text-center">Kenya's Leading Travel</small>
+                <h1 style="font-size: 50px;" class="text-center header-font">Why Travel with Spoton?</h1>
+            </div>
+            <div class="row gap-3 justify-content-center">
+
+                <div class="col-lg-2 card" id="local-travel">
+                    <div class="top">
+                        
+                        <div class="overlay shadow">
+                            <i class="bi bi-geo-fill"></i>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <p style="font-size: 20px;font-weight: 700;">Domestic Travel</p>
+                    </div>
+                </div>
+    
+                <div class="col-lg-2 card" id="event-package">
+                    <div class="top">
+                        
+                        <div class="overlay shadow">
+                            <i class="bi bi-box-seam-fill"></i>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <p style="font-size: 20px;font-weight: 700;">Event Packages</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 card" id="int-travel">
+                    <div class="top">
+                        
+                        <div class="overlay shadow">
+                            <i class="bi bi-globe-americas"></i>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <p style="font-size: 20px;font-weight: 700;">Domestic Travel</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 card" id="int-travel">
+                    <div class="top">
+                        
+                        <div class="overlay shadow">
+                            <i class="bi bi-globe-americas"></i>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <p style="font-size: 20px;font-weight: 700;">Domestic Travel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <app-parallax-banner></app-parallax-banner>
+    </div>
+
+    <div class="container-fluid" id="about-section">
+        <div class="row">
+            <div class="col-md-6 p-5 light-text" id="images">
+                <div class="row justify-content-end">
+                    <div class="col-md-9 p-2 shadow rounded" id="lg-img">
+                        <div class="img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 pic-play">
+                    <div class="col-md-6">
+                        <div class="small-img p-2 shadow rounded">
+                            <div class="img">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex flex-column p-5 justify-content-center">
+                        <h3 style="font-size: 22px;font-weight: bold;" class="dark-text">Find Your Best<br> Destination</h3>
+                        <p (click)="openDialog()" style="font-size: 60px;color: #d63384;cursor: pointer;"><i class="bi bi-play-circle"></i></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 light-text p-5">
+                <small class="ligh-text">ABOUT SPOTON</small>
+                <h1 style="font-size: 50px;font-weight: bold;line-height: 50px;" class="dark-text header-font">Kenyas Best Travel<br> Agency Company <br>2020 - 2022 </h1>
+                <div>
+                    <p>Spoton Vacations Limited is a well-established tour, travel, and Events Company with Vast experience in handling inbound and outbound holidays not only for domestic tourists but also international tourists from all over the world. We specialize in all destinations from Ottawa to Durban.</p>
+                    <p>We are dedicated to offering the highest quality, safest, and best value trips that we can. But on top of offering an excellent product, we are also committed to making a positive change in the lives of our clients. We at Spoton Vacation have all benefited in meaningful ways from the remarkable 
+                        power of having a passion in life; of having a pastime that brings you pleasure, friendships, a sense of achievement, and a total escape from the pressures of everyday life. Some of us have found self-confidence, others friendships, and others motivation and drive as a result of our involvement in sports.</p>
+                    <p>Spoton Vacations Limited is a well-established tour, travel, and Events Company with vast experience in handling inbound and outbound holidays not only for domestic tourists but also international tourists from all over the world.</p>
+                    <p>Our specialty is the ability to design unique tours and safaris to fit every type of tourist, from the budget to the luxury providing a unique opportunity to combine bush and beach adventures with East Africa’s spectacular scenery and not forgetting the rest of the world hidden treasures!</p>
+                    <p>If you’re looking for a vacation that provides a huge sense of personal recreation while still being fun, exciting, relaxing, and adventurous and rewarding, we suggest you check out our wide range of tours and travel packages.</p>
+                </div>
+            </div>
+        </div>   
+    </div>
+
+    <div class="container-fluid dark-text py-4 packages" id="packages;" style="background-color: #f5f6f6;">
+        <div class="row">
+            <p style="font-size: 17px;"></p>
+            <h2 style="font-size: 50px;line-height: 50px;" class="text-center">Enjoy Discounted Holiday<br> <span class="underline">Deals</span></h2>
+        </div>
+        <div class="row my-3  mx-auto justify-content-center gap-5 px-4" style="flex-wrap: wrap;display: flex;">
+
+            <div class="package card shadow-sm p-0 col-md-4 col-lg-4" id="dubai">
+                <div class="img p-0">
+                    <img class="img-fluid" src="../../../assets/images/dubai.jpeg" alt="">
+                </div>
+                <div class="lower" style=" padding: 33px 35px 40px 40px; ">
+                    <div class="row">
+                        <div class="stars">
+
+                        </div>
+                        <div>
+                            <p class="mb-0">1 Review</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="mb-0 medium-text" style="font-size: 24px;">Dubai Holiday Packages 2023</p>
+                        <h4 class="ligh-text" style="margin-bottom: 22px;font-size: 15px;color: #808080;"><span style="color: #d63384;">KSh69500</span> / Per Person</h4>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+                        <div style="font-size: 15px;" class="banner rounded d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock"></i>
+                                <p class="mb-0 mx-2">5 days</p>
+                            </div>|
+                            <div>
+                                <p class="mb-0"><span><i class="bi bi-map"></i></span> Dubai, UAE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p style="font-size: 16px;" class="ligh-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi incidunt ducimus quidem dicta perferendis placeat minima quas corporis quibusdam laborum!</p>
+                    </div>
+                    <div class="row p-2">
+                        <hr>
+                        <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package card shadow-sm p-0 col-md-4 col-lg-4" id="mara" style="width: 370px;">
+                <div class="img">
+                    <img class="img-fluid" src="../../../assets/images/mara.jpeg" alt="">
+                </div>
+                <div class="lower" style=" padding: 33px 35px 40px 40px; ">
+                    <div class="row">
+                        <div class="stars">
+
+                        </div>
+                        <div>
+                            <p class="mb-0">1 Review</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="mb-0 medium-text" style="font-size: 24px;">Maasai Mara Wildbeest Migration</p>
+                        <h4 class="ligh-text" style="margin-bottom: 22px;font-size: 15px;color: #808080;"><span style="color: #d63384;">KSh20,000</span> / Per Person</h4>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+                        <div style="font-size: 15px;" class="banner rounded d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock"></i>
+                                <p class="mb-0 mx-2">5 days</p>
+                            </div>|
+                            <div>
+                                <p class="mb-0"><span><i class="bi bi-map"></i></span> Mombasa,Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p style="font-size: 16px;" class="ligh-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi incidunt ducimus quidem dicta perferendis placeat minima quas corporis quibusdam laborum!</p>
+                    </div>
+                    <div class="row p-2">
+                        <hr>
+                        <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package card shadow-sm p-0 col-md-4 col-lg-4" id="seychelles" style="width: 370px;">
+                <div class="img">
+                    <img class="img-fluid" src="../../../assets/images/seychelles.jpeg" alt="">
+                </div>
+                <div class="lower" style=" padding: 33px 35px 40px 40px; ">
+                    <div class="row">
+                        <div class="stars">
+
+                        </div>
+                        <div>
+                            <p class="mb-0">1 Review</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="mb-0 medium-text" style="font-size: 24px;">Mombasa Holiday Package</p>
+                        <h4 class="ligh-text" style="margin-bottom: 22px;font-size: 15px;color: #808080;"><span style="color: #d63384;">KSh20,000</span> / Per Person</h4>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+                        <div style="font-size: 15px;" class="banner rounded d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock"></i>
+                                <p class="mb-0 mx-2">5 days</p>
+                            </div>|
+                            <div>
+                                <p class="mb-0"><span><i class="bi bi-map"></i></span> Mombasa,Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p style="font-size: 16px;" class="ligh-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi incidunt ducimus quidem dicta perferendis placeat minima quas corporis quibusdam laborum!</p>
+                    </div>
+                    <div class="row p-2">
+                        <hr>
+                        <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package card shadow-sm p-0 col-md-4 col-lg-4" id="dubai" style="width: 370px;">
+                <div class="img p-0">
+                    <img class="img-fluid" src="../../../assets/images/dubai.jpeg" alt="">
+                </div>
+                <div class="lower" style=" padding: 33px 35px 40px 40px; ">
+                    <div class="row">
+                        <div class="stars">
+
+                        </div>
+                        <div>
+                            <p class="mb-0">1 Review</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="mb-0 medium-text" style="font-size: 24px;">Dubai Holiday Packages 2023</p>
+                        <h4 class="ligh-text" style="margin-bottom: 22px;font-size: 15px;color: #808080;"><span style="color: #d63384;">KSh69500</span> / Per Person</h4>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+                        <div style="font-size: 15px;" class="banner rounded d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock"></i>
+                                <p class="mb-0 mx-2">5 days</p>
+                            </div>|
+                            <div>
+                                <p class="mb-0"><span><i class="bi bi-map"></i></span> Dubai, UAE</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p style="font-size: 16px;" class="ligh-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi incidunt ducimus quidem dicta perferendis placeat minima quas corporis quibusdam laborum!</p>
+                    </div>
+                    <div class="row p-2">
+                        <hr>
+                        <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package card shadow-sm p-0 col-md-4 col-lg-4" id="mara" style="width: 370px;">
+                <div class="img">
+                    <img class="img-fluid" src="../../../assets/images/mara.jpeg" alt="">
+                </div>
+                <div class="lower" style=" padding: 33px 35px 40px 40px; ">
+                    <div class="row">
+                        <div class="stars">
+
+                        </div>
+                        <div>
+                            <p class="mb-0">1 Review</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="mb-0 medium-text" style="font-size: 24px;">Maasai Mara Wildbeest Migration</p>
+                        <h4 class="ligh-text" style="margin-bottom: 22px;font-size: 15px;color: #808080;"><span style="color: #d63384;">KSh20,000</span> / Per Person</h4>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+                        <div style="font-size: 15px;" class="banner rounded d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock"></i>
+                                <p class="mb-0 mx-2">5 days</p>
+                            </div>|
+                            <div>
+                                <p class="mb-0"><span><i class="bi bi-map"></i></span> Mombasa,Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p style="font-size: 16px;" class="ligh-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi incidunt ducimus quidem dicta perferendis placeat minima quas corporis quibusdam laborum!</p>
+                    </div>
+                    <div class="row p-2">
+                        <hr>
+                        <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="package card shadow-sm p-0 col-md-4 col-lg-4" id="seychelles" style="width: 370px;">
+                <div class="img">
+                    <img class="img-fluid" src="../../../assets/images/seychelles.jpeg" alt="">
+                </div>
+                <div class="lower" style=" padding: 33px 35px 40px 40px; ">
+                    <div class="row">
+                        <div class="stars">
+
+                        </div>
+                        <div>
+                            <p class="mb-0">1 Review</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="mb-0 medium-text" style="font-size: 24px;">Mombasa Holiday Package</p>
+                        <h4 class="ligh-text" style="margin-bottom: 22px;font-size: 15px;color: #808080;"><span style="color: #d63384;">KSh20,000</span> / Per Person</h4>
+                    </div>
+
+                    <div class="row" style="width: 100%;">
+                        <div style="font-size: 15px;" class="banner rounded d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock"></i>
+                                <p class="mb-0 mx-2">5 days</p>
+                            </div>|
+                            <div>
+                                <p class="mb-0"><span><i class="bi bi-map"></i></span> Mombasa,Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <p style="font-size: 16px;" class="ligh-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi incidunt ducimus quidem dicta perferendis placeat minima quas corporis quibusdam laborum!</p>
+                    </div>
+                    <div class="row p-2">
+                        <hr>
+                        <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <app-partner-banner></app-partner-banner>
+    </div>
+
+</div>

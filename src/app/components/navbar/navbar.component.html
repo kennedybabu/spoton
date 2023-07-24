@@ -1,0 +1,85 @@
+<div class="container-fluid shadow">
+    <div class="row">
+        <div class="col-6 col-lg-2">
+            <img routerLink="/"  style="width: auto;height: 50px;cursor: pointer;" src="../../../assets/images/spoton.png" alt="logo">
+        </div>
+
+        <div class="col-md-6 col-lg-3" id="nav-list">
+            <div>
+                <button mat-button color="black" [matMenuTriggerFor]="home">Home</button>
+                <mat-menu #home="matMenu">
+                  <button mat-menu-item>Tour Packages</button>
+                  <button mat-menu-item>Gallery</button>
+                </mat-menu>
+            </div>
+
+            <div>
+                <button mat-button color="black" [matMenuTriggerFor]="destination">Destination</button>
+                <mat-menu #destination="matMenu">
+                  <button (click)="searchTrips('africa-holidays')" mat-menu-item>Africa Holidays</button>
+                  <button (click)="searchTrips('asia')" mat-menu-item>Asia</button>
+                  <button (click)="searchTrips('europe')" mat-menu-item>Europe</button>
+                </mat-menu>
+            </div>
+
+            <div>
+                <button mat-button color="black" [matMenuTriggerFor]="domestic">Domestic</button>
+                <mat-menu #domestic="matMenu">
+                  <button (click)="searchTrips('amboselli-deals')" mat-menu-item>Amboselli Deals</button>
+                  <button (click)="searchTrips('easter-packages')" mat-menu-item>Easter Packages</button>
+                  <button (click)="searchTrips('maasai-mara')" mat-menu-item>Maasai Mara</button>
+                  <button (click)="searchTrips('nairobi-deals')" mat-menu-item>Nairobi Deals</button>
+                </mat-menu>
+            </div>
+
+            <div>
+                <button mat-button color="black" [matMenuTriggerFor]="honeymoon">Honeymoon</button>
+                <mat-menu #honeymoon="matMenu">
+                  <button (click)="searchTrips('anniversary-packages')" mat-menu-item>Anniversary Packages</button>
+                  <button (click)="searchTrips('babymoon-packages')" mat-menu-item>Babymoon Packages</button>
+                  <button (click)="searchTrips('birthday-packages')" mat-menu-item>Birthday Packages</button>
+                  <button (click)="searchTrips('destination-holidays')" mat-menu-item>Destination Packages</button>
+                  <button (click)="searchTrips('engagement-packages')" mat-menu-item>Engagement Packages</button>
+               </mat-menu>
+            </div>
+
+            <div>
+                <button mat-button color="black" [matMenuTriggerFor]="international">International</button>
+                <mat-menu #international="matMenu">
+                  <button (click)="searchTrips('canada')" mat-menu-item>Canada</button>
+                  <button (click)="searchTrips('egypt')" mat-menu-item>Egypt</button>
+                  <button (click)="searchTrips('france')" mat-menu-item>France</button>
+                  <button (click)="searchTrips('madagascar')" mat-menu-item>Madagascar</button>
+                  <button (click)="searchTrips('morocco')" mat-menu-item>Morocco</button>
+                  <button (click)="searchTrips('turkey')" mat-menu-item>Turkey</button>
+               </mat-menu>
+            </div>
+
+            <div>
+                <button (click)="searchTrips('middle-east')" mat-button  color="black">MiddleEast</button>
+            </div>
+
+            <div>
+                <button mat-button color="black" [matMenuTriggerFor]="international">Safaris</button>
+                <mat-menu #international="matMenu">
+                  <button (click)="searchTrips('china')" mat-menu-item>China</button>
+                  <button (click)="searchTrips('dubai')" mat-menu-item>Dubai</button>
+                  <button (click)="searchTrips('indian-ocean-beach-holidays')" mat-menu-item>Indian Ocean Beach Holidays</button>
+                  <button (click)="searchTrips('kenyan-safaris')" mat-menu-item>Kenyan Safaris</button>
+                  <button (click)="searchTrips('kenya/Tanzania-safaris')" mat-menu-item>Kenya/Tanzania Safaris</button>
+                  <button (click)="searchTrips('tanzania-safaris')" mat-menu-item>Tanzania Safaris</button>
+                  <button (click)="searchTrips('zanzibar')" mat-menu-item>Zanzibar</button>
+               </mat-menu>
+            </div>
+
+            <div>
+                <button (click)="searchTrips('team-building')" mat-button color="black">TeamBuilding</button>
+            </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+            <button (click)="toggle()" id="toggleButton"><i style="font-size: 2rem;" class="bi bi-list"></i></button>
+            <button routerLink="login" mat-raised-button color="primary">Login</button>
+        </div>
+    </div>
+</div>

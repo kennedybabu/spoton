@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'spoton';
+  opened: boolean = false
+
+  onToggle(event:any){
+    this.opened = !this.opened
+  }
 }
