@@ -1,7 +1,6 @@
-import { style } from '@angular/animations';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSlider } from '@angular/material/slider';
+import { Router } from '@angular/router';
 import { VideosComponent } from 'src/app/components/videos/videos.component';
 
 
@@ -20,17 +19,24 @@ export class LandingpageComponent {
   value = 0;
 
   
-  constructor(public dialog: MatDialog){}
+  constructor(
+    public dialog: MatDialog,
+    private router:Router){}
 
   openDialog() {
     const dialogRef = this.dialog.open(VideosComponent, {
-      width: '640px',
-      height: '360px'
+      width: '80%',
+      height: '75%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+
+  bookTour(){
+    this.router.navigate(['booking'])
   }
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { LoginService } from 'src/app/services/auth/login.service';
 })
 export class LoginComponent {
 
-  constructor(private loginService:LoginService){}
+  constructor(
+    private loginService:LoginService,
+    private router:Router
+    ){}
 
   loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -20,4 +24,7 @@ export class LoginComponent {
     this.loginService.login(this.loginForm.value)
   }
 
+  redirect(){
+    this.router.navigate(['signup'])
+  }
 }

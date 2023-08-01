@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { BookTourComponent } from '../book-tour/book-tour.component';
+
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +13,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
 
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private dialog: MatDialog){}
 
   @Output() toggleNav: EventEmitter<boolean> = new EventEmitter()
 
@@ -20,6 +24,19 @@ export class NavbarComponent {
 
   searchTrips(type:string) {
     this.router.navigate(['trip-search', type])
+  }
+
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(BookTourComponent, {
+      height: '80%',
+      width: '75%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

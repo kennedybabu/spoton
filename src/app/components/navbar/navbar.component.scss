@@ -51,16 +51,38 @@
 
             div {
                 flex-direction: row!important;
-                justify-content: space-between;
+                justify-content: start;
                 
 
                 #toggleButton {
                     display: block;
                     order: 2;
                 }
+
+
+                #login-btn {
+                    display: none;
+                }
     
+            }
+
+            #end {
+                justify-content: end;
             }
         }
     }
 
+}
+
+
+@media screen and (max-width: 500px){
+    .container-fluid {
+        height: 100px;
+
+        .row {
+            #logo {
+                height: 35px!important;
+            }
+        }
+    }
 }

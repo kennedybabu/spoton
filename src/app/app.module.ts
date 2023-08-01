@@ -22,6 +22,9 @@ import { ParallaxBannerComponent } from './components/parallax-banner/parallax-b
 import { TripSearchComponent } from './pages/trip-search/trip-search.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { VideosComponent } from './components/videos/videos.component';
+import { BookTourComponent } from './components/book-tour/book-tour.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -36,7 +39,9 @@ import { VideosComponent } from './components/videos/videos.component';
     PartnerBannerComponent,
     ParallaxBannerComponent,
     TripSearchComponent,
-    VideosComponent
+    VideosComponent,
+    BookTourComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { VideosComponent } from './components/videos/videos.component';
     MatCardModule,
     MatSidenavModule,
     ReactiveFormsModule,
-    MatDialogModule    
+    MatDialogModule,
+    MatTabsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

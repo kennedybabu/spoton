@@ -8,7 +8,12 @@
     .row {
 
 
-        .col-2 {
+        #logo {
+            height: 40px!important;
+        }
+
+
+        .col {
 
             h2  {
                 position: relative;
@@ -44,3 +49,4 @@
         }
     }
 }
+
