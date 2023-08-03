@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { LoginService } from 'src/app/services/auth/login.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class LoginComponent {
 
   constructor(
     private loginService:LoginService,
+    private authService:AuthService,
     private router:Router
     ){}
 
@@ -21,7 +23,15 @@ export class LoginComponent {
   })
 
   onFormSubmit(){
-    this.loginService.login(this.loginForm.value)
+    // this.loginService.login(this.loginForm.value).subscribe((res) => {
+    //   console.log(res)
+    // })
+
+    this.authService.login(this.loginForm.value).subscribe((res:any) => {
+      console.log(res)
+    }, (err) => {
+      console.log(err)
+    })
   }
 
   redirect(){

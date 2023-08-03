@@ -25,6 +25,9 @@ import { VideosComponent } from './components/videos/videos.component';
 import { BookTourComponent } from './components/book-tour/book-tour.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './pages/admin/admin.component'; // <-- Make sure to include this import
+import { AuthInterceptor } from './_services/auth.interceptor';
 
 
 
@@ -41,7 +44,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     TripSearchComponent,
     VideosComponent,
     BookTourComponent,
-    BookingComponent
+    BookingComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +61,12 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatSidenavModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTabsModule    
+    MatTabsModule,
+    HttpClientModule    
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,13 +5,19 @@ import { LoginComponent } from './pages/login/login.component';
 import { TripSearchComponent } from './pages/trip-search/trip-search.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { BookingComponent } from './pages/booking/booking.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [ 
   {path:'', component: LandingpageComponent},
   {path:'trip-search/:type', component: TripSearchComponent},
   {path:'login', component:LoginComponent},
   {path:'booking', component: BookingComponent},
-  {path:'signup', component: SignupComponent}
+  {path: 'admin', component: AdminComponent},
+  {path:'signup', component: SignupComponent},
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  }
 ];
 
 @NgModule({
