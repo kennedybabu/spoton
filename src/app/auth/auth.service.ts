@@ -33,10 +33,10 @@ export class AuthService {
       "password": formvalue.password,
       "username": formvalue.username,  
     }
-    return this.http.post('http://109.123.254.230:8888/accounts/create/user', jsonObject).pipe(
+    return this.http.post('http://109.123.254.230:8888/accounts/token/', jsonObject).pipe(
       map((res: any) => {
-        const access_token = res
-        const refresh_token = res
+        const access_token = res.access
+        const refresh_token = res.refresh
         this.userDataSubject.next({ access_token, refresh_token})
         localStorage.setItem(this.ACCESS_TOKEN, access_token)
         localStorage.setItem(this.REFRESH_TOKEN, refresh_token)

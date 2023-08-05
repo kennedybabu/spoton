@@ -1,5 +1,47 @@
-<div class="container">
-    <div class="row">
-        
+<div class="container-fluid">
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-2 p-3" style="min-height: 90vh;border-right: 1px solid #c2c1c1;">
+            <h3 style="font-size: 1.3rem;" class="dark-text">Admin Page</h3> 
+            <div class="row p-3">
+                <mat-nav-list class="dark-text d-flex flex-column">
+                    <a>Package Type</a> 
+                    <a>Package Option</a>
+                    <a>Create Destination</a>
+                    <a>Create Destination Package</a>
+                </mat-nav-list>
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="container">
+                <div class="row">
+                    <h3 class="text-center mb-0" style="font-size: 30px;font-weight: 700;">Login</h3>
+                    <form  class="mx-auto light-text rounded py-5" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+                        <div class="form-group">
+                            <label for="name">name</label>
+                            <input formControlName="name" type="text" name="name" id="name" class="form-control">
+                        </div>
+            
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input formControlName="description" type="text" name="description" id="description" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <button style="height: 50px;" class="my-3" mat-raised-button color="primary">Login</button>   
+                        <p style="cursor: pointer;;"  class="my-2">Don't have an account? <a routerLink="signup">Sign Up</a></p>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </div>

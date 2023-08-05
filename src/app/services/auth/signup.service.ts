@@ -9,7 +9,6 @@ export class SignupService {
   constructor(private http:HttpClient) { }
 
   signup(formvalue:any){
-    console.log(formvalue)
 
     let jsonObject = {
       "password": formvalue.password,

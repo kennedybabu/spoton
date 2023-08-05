@@ -8,7 +8,8 @@ import { BookingComponent } from './pages/booking/booking.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [ 
-  {path:'', component: LandingpageComponent},
+  {path:'', redirectTo: '/landingpage', pathMatch: 'full'},
+  {path:'landingpage', component: LandingpageComponent},
   {path:'trip-search/:type', component: TripSearchComponent},
   {path:'login', component:LoginComponent},
   {path:'booking', component: BookingComponent},

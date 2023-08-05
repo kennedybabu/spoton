@@ -1,8 +1,29 @@
-<mat-drawer-container class="wrapper">
+<mat-drawer-container id="wrapper">
     <mat-drawer mode="over" position="end" opened={{opened}}>Drawer content</mat-drawer>
     <mat-drawer-content>
         <app-navbar (toggleNav)="onToggle($event)" style="color: black;"></app-navbar>
         <router-outlet></router-outlet>
+
+        <!--error notification -->
+        <div *ngIf="errorNotification" class="error msg mat-elevation-z8 light-text d-flex p-2">
+            <div class="px-2">
+                <i style="font-size: 1.2rem;" class="dark-text bi bi-exclamation-triangle"></i>
+            </div>
+            <p class="mb-0" style="letter-spacing: 1px;">
+                {{errorNotification}}, try again
+            </p>
+        </div>
+
+        <!-- success notification -->
+        <div *ngIf="successNotification" class="success msg mat-elevation-z8 light-text d-flex p-2">
+            <div class="px-2">
+                <i style="font-size: 1.2rem;" class="bi bi-exclamation-triangle dark-text"></i>
+            </div>
+            <p class="mb-0" style="letter-spacing: 1px;">
+                {{successNotification}}
+            </p>
+        </div>
         <app-footer></app-footer>
     </mat-drawer-content>
+
 </mat-drawer-container>

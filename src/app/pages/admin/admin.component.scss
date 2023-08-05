@@ -1,7 +1,25 @@
-.container {
+.container-fluid {
     min-height:calc(100vh - 381px);
+    background-color: #fefefe;
 
-    .row {
-        margin-top: 100px;
+
+    .col-md-2 {
+        mat-nav-list {
+            a {
+                cursor: pointer;
+                padding: .6rem .5rem;
+
+                &:hover {
+                    background-color: #d1d1d1;
+                }
+            }
+        }
     }
+
+
+    .col-md-10 {
+        
+    }
+
+  
 }

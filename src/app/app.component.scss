@@ -1,9 +1,47 @@
-.wrapper {
-    // min-height: 100vh;
+#wrapper {
+    position: relative;
     
 
     mat-drawer {
         width: 400px;
+    }
+
+
+    mat-drawer-content {
+
+        .msg {
+            position: fixed;
+            top: 150px;
+            right: 100px;
+            z-index: 20000;
+            height: 80px;
+            width: 300px;
+            animation: fadeIn .5s;
+        }
+
+        .error {
+            border-left: 5px solid rgb(250, 31, 31);
+            background-color: rgb(255, 248, 248);
+        }
+
+        .success {
+            border-left: 5px solid rgb(31, 250, 42);
+            background-color: rgb(255, 248, 248);
+        }
+    }
+
+
+}
+
+
+@keyframes fadeIn {
+    0% {
+        // opacity: 1;
+        right: -200px;
+    }
+    100% {
+        // opacity: 1;
+        right: 100px;
     }
 }
 

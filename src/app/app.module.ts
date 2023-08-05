@@ -28,6 +28,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './pages/admin/admin.component'; // <-- Make sure to include this import
 import { AuthInterceptor } from './_services/auth.interceptor';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -62,7 +63,8 @@ import { AuthInterceptor } from './_services/auth.interceptor';
     ReactiveFormsModule,
     MatDialogModule,
     MatTabsModule,
-    HttpClientModule    
+    HttpClientModule,
+    MatListModule    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
