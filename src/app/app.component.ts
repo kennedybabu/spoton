@@ -16,14 +16,29 @@ export class AppComponent {
   constructor(private notificationService:NotificationService){
     this.notificationService.getSuccessNotification().subscribe((res) => {
       this.successNotification = res
+
+
+      setTimeout(() => {
+        this.clearMsg()
+      }, 2500)
     })
 
     this.notificationService.getErrorNotification().subscribe((res) => {
       this.errorNotification = res
+
+      setTimeout(() => {
+        this.clearMsg()
+      }, 2500)
     })
   }
 
   onToggle(event:any){
     this.opened = !this.opened
+  }
+
+
+  clearMsg(){
+    this.successNotification =''
+    this.errorNotification =''
   }
 }

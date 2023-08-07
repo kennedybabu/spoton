@@ -14,9 +14,10 @@
             top: 150px;
             right: 100px;
             z-index: 20000;
-            height: 80px;
+            height: 70px;
             width: 300px;
             animation: fadeIn .5s;
+            transition: all ease-in-out .5s;
         }
 
         .error {
@@ -30,7 +31,11 @@
         }
     }
 
+}
 
+
+.mdc-tab__text-label {
+    color: rgb(66, 66, 66)!important;
 }
 
 
@@ -39,11 +44,29 @@
         // opacity: 1;
         right: -200px;
     }
+    75% {
+        right: 120px;
+    }
     100% {
         // opacity: 1;
         right: 100px;
     }
 }
+
+
+.fade {
+
+    @keyframes fadeOut {
+        0% {
+            right: 100px;
+        }
+        100% {
+            right: -200px;
+        }
+    }
+}
+
+
 
 
 @media screen and (max-width: 500px){

@@ -18,8 +18,28 @@
 
 
     .col-md-10 {
-        
+
+        span {
+            color: black!important;
+        }
+
+
+        mat-tab {
+            color: rgb(54, 54, 54)!important;
+        }
+    
+
     }
 
   
+}
+
+
+.mat-mdc-tab {
+    color: rgb(26, 16, 16)!important;
+}
+
+
+span.mdc-tab__text-label {
+    color: rgb(26, 16, 16)!important;
 }
