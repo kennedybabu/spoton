@@ -27,10 +27,12 @@
         mat-tab {
             color: rgb(54, 54, 54)!important;
         }
-    
+
+        .mat-mdc-tab .mdc-tab__text-label {
+            color: red!important;
+        }    
 
     }
-
   
 }
 

@@ -26,9 +26,10 @@ import { BookTourComponent } from './components/book-tour/book-tour.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './pages/admin/admin.component'; // <-- Make sure to include this import
+import { AdminComponent } from './pages/admin/admin.component'; 
 import { AuthInterceptor } from './_services/auth.interceptor';
 import {MatListModule} from '@angular/material/list';
+
 
 
 
@@ -64,7 +65,8 @@ import {MatListModule} from '@angular/material/list';
     MatDialogModule,
     MatTabsModule,
     HttpClientModule,
-    MatListModule    
+    MatListModule,
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
