@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,8 @@ export class AuthService {
       const refresh_token = (<string>localStorage.getItem(this.REFRESH_TOKEN))
       this.userDataSubject.next({access_token, refresh_token})      
     }
+
+
   }
 
   get userData() {
@@ -59,6 +62,36 @@ export class AuthService {
       return false
     }
     return access_token
+  }
+
+
+  isAuthTokenValid(token: string){
+    const decoded: any = jwt_decode(token)
+
+    const expMilSecond: number = decoded?.exp * 1000  
+    const currentTime = Date.now()
+    if(expMilSecond < currentTime) {
+      return false
+    } 
+    return true
+  }
+
+
+  generateNewTokens(): Observable<HttpEvent<any>> {
+    const refresh_token = localStorage.getItem('refresh_token')
+
+    return this.http.post('http://109.123.254.230:8888/accounts/token/refresh/', {
+      "refresh": refresh_token
+    }).pipe(
+      map((res: any) => {
+        const access_token = res.access 
+        const refresh_token = res.refresh
+        this.userDataSubject.next({ access_token, refresh_token})
+        localStorage.setItem(this.ACCESS_TOKEN, access_token)
+        localStorage.setItem(this.REFRESH_TOKEN, refresh_token)
+        return res
+      })
+    )
   }
   
 }

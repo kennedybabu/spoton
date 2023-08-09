@@ -29,6 +29,12 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './pages/admin/admin.component'; 
 import { AuthInterceptor } from './_services/auth.interceptor';
 import {MatListModule} from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { CreatePackageTypeComponent } from './components/package/create-package-type/create-package-type.component';
+import { CreateDestinationsComponent } from './components/destinations/create-destinations/create-destinations.component';
+import { DestinationsComponent } from './components/destinations/destinations/destinations.component';
+import { PackagesComponent } from './components/package/packages/packages.component';
 
 
 
@@ -47,7 +53,11 @@ import {MatListModule} from '@angular/material/list';
     VideosComponent,
     BookTourComponent,
     BookingComponent,
-    AdminComponent
+    AdminComponent,
+    CreatePackageTypeComponent,
+    CreateDestinationsComponent,
+    DestinationsComponent,
+    PackagesComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +76,8 @@ import {MatListModule} from '@angular/material/list';
     MatTabsModule,
     HttpClientModule,
     MatListModule,
-    
+    MatPaginatorModule,
+    MatTableModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

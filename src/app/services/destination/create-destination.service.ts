@@ -16,13 +16,11 @@ export class CreateDestinationService {
 
     formData.append('image', file)
 
-    formData.append('name',JSON.stringify({    
-      "name": formValue.name        
-    }))
+    formData.append('name', formValue.name)
 
-    formData.append('description', JSON.stringify({
-      "description": formValue.description
-    }))
+    formData.append('description', formValue.description)
+
+    
     return this.http.post('http://109.123.254.230:8888/services/destinations/create', formData)
   }
 }

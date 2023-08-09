@@ -3,12 +3,9 @@
         <div class="col-md-2 p-3" style="height: auto;border-right: 1px solid #c2c1c1;">
             <h3 style="font-size: 1.3rem;" class="dark-text">Admin Page</h3> 
             <div class="row p-3">
-                <!-- <mat-nav-list class="dark-text d-flex flex-column">
-                    <a>Package Type</a> 
-                    <a>Package Option</a>
-                    <a>Create Destination</a>
-                    <a>Create Destination Package</a>
-                </mat-nav-list> -->
+          
+
+
             </div>
         </div>
 
@@ -37,17 +34,18 @@
                                 </form>
                             </div>
 
-                            <div class="col-md-7">
-
+                            <div class="col-md-8">
+                                <app-destinations></app-destinations>
                             </div>
                         </div>
                     </div>
                 </mat-tab>
+
                 <mat-tab  style="color: black;" label="Package Type"> 
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
-                                     <form [formGroup]="packageTypeForm" (submit)="packageTypeSubmit()" class="mx-auto light-text rounded py-5" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+                                <form [formGroup]="packageTypeForm" (submit)="packageTypeSubmit()" class="mx-auto light-text rounded py-5" style="max-width: 570px;background-color: rgb(255, 255, 255);">
                                     <div class="form-group">
                                         <label for="name">name</label>
                                         <input formControlName="name" type="text" name="name" id="name" class="form-control">
@@ -60,11 +58,9 @@
             
                                     <div class="form-group">
                                         <label>Type</label>
-                                        <select class="form-select" aria-label="Default select example">
+                                        <select formControlName="destination" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                            <option *ngFor="let destination of destinations" [value]="destination.id">{{destination.name}}</option>
                                         </select>
                                     </div>
                                     <button class="my-3" mat-raised-button color="primary">Create Package Type</button>   
@@ -73,11 +69,68 @@
                             </div>
 
                             <div class="col-md-8">
+                                <app-packages></app-packages>
+                            </div>
+                        </div>
+                    </div>
+                 </mat-tab>
+
+                 <mat-tab label="Transport">
+                    <div class="container">
+                        <div class="row dark-text">
+                            <div class="col-md-4">
+                                <form [formGroup]="transportForm" (submit)="transportFormSubmit()">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input class="form-control" type="text" formControlName="name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input class="form-control" type="text" formControlName="description">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="image">Image</label>
+                                        <input (change)="onImageSelect($event)" class="form-control" type="file" formControlName="image">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="transport_type">Transport Type</label>
+                                        <!-- <select class="form-control">
+                                            <option>Select Transport Type</option>
+                                            <option>Train</option>
+                                            <option>Bus</option>
+                                            <option>Flight</option>
+                                            <option>TV</option>
+                                        </select> -->
+                                        <select formControlName="transport_type" class="form-select" aria-label="Default select example">
+                                            <option selected>Open this select menu</option>
+                                            <option value="TR">Train</option>
+                                            <option value="BS">Bus</option>
+                                            <option value="FL">Flight</option>
+                                            <option value="TV">Tour Van</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="owner">Owner</label>
+                                        <input class="form-control" type="text" formControlName="owner">
+                                    </div>
+
+                                    <button class="my-3" mat-raised-button color="primary">Create Transport</button>   
+
+                                </form>
+                            </div>
+
+                            <div class="col-md-8">
 
                             </div>
                         </div>
                     </div>
                  </mat-tab>
+
                 <mat-tab label="Package Option">
                    <div class="container">
                     <div class="row">
@@ -92,10 +145,23 @@
                                     <label for="description">Description</label>
                                     <input formControlName="description" type="text" name="description" id="description" class="form-control">
                                 </div>
-        
+
                                 <div class="form-group">
+                                    <label for="max_occupants">Max Occupants</label>
+                                    <input formControlName="max_occupants" type="text" name="max_occupants" id="max_occupants" class="form-control">
+                                </div>
+        
+                                <!-- <div class="form-group">
                                     <label for="package">Package</label>
                                     <input formControlName="package" type="text" name="description" id="package" class="form-control">
+                                </div> -->
+
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select formControlName="package" class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option *ngFor="let package of packageTypes" [value]="package.id">{{package.name}}</option>
+                                    </select>
                                 </div>
         
                                 <div class="form-group">
@@ -107,16 +173,7 @@
                                     <label for="hotel">Hotel</label>
                                     <input formControlName="hotel" type="text" name="hotel" id="hotel" class="form-control">
                                 </div>
-        
-                                <!-- <div class="form-group">
-                                    <label>Type</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div> -->
+
                                 <button class="my-3" mat-raised-button color="primary">Create Package Option</button>   
                             </form>
                         </div>
@@ -126,7 +183,8 @@
                         </div>
                     </div>
                    </div>
-                </mat-tab>
+                </mat-tab>               
+
                 <mat-tab label="Destination Packages">
                     <div class="container">
                         <div class="row">
@@ -178,8 +236,7 @@
                         </div>
                     </div>
                 </mat-tab>
-            </mat-tab-group>
-            
+            </mat-tab-group>            
         </div>
     </div>
 </div>
