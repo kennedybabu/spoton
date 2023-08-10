@@ -80,6 +80,7 @@
                         <div class="row dark-text">
                             <div class="col-md-4">
                                 <form [formGroup]="transportForm" (submit)="transportFormSubmit()">
+
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input class="form-control" type="text" formControlName="name">
@@ -90,21 +91,10 @@
                                         <input class="form-control" type="text" formControlName="description">
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="image">Image</label>
-                                        <input (change)="onImageSelect($event)" class="form-control" type="file" formControlName="image">
-                                    </div>
-
+                                    <div (click)="openDialog()" class="my-1" mat-raised-button color="primary">Add Cost</div>   
 
                                     <div class="form-group">
                                         <label for="transport_type">Transport Type</label>
-                                        <!-- <select class="form-control">
-                                            <option>Select Transport Type</option>
-                                            <option>Train</option>
-                                            <option>Bus</option>
-                                            <option>Flight</option>
-                                            <option>TV</option>
-                                        </select> -->
                                         <select formControlName="transport_type" class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             <option value="TR">Train</option>

@@ -9,15 +9,27 @@ export class CreateTransportService {
   file!: any
   constructor(private http:HttpClient) { }
   
-  createTransport(formValue:any, file: any): Observable<any> {
+  createTransport(formValue:any, costs: any): Observable<any> {
     const formData = new FormData()
+
+    console.log(costs, '====')
+
+    let jsonObject = {
+      cost: costs,
+      name: formValue.name,
+      description: formValue.description,
+      transport_type: formValue.transport_type,
+      owner: formValue.owner
+    }
 
     formData.append('name', formValue.name)
     formData.append('description', formValue.name)
-    formData.append('image', file)
+    formData.append('cost', costs)
     formData.append('transport_type', formValue.transport_type)
-    formData.append('owner', formValue.owner)
+    formData.append('owner', '1')
 
-  return this.http.post('http://109.123.254.230:8888/transport/create', formData)
+    console.log(jsonObject)
+
+  return this.http.post('http://109.123.254.230:8888/transport/create', jsonObject)
 }
 }

@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <form [formGroup]="costForm" (submit)="submit()" class="mx-auto light-text rounded py-5" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+            <div class="form-group">
+                <label for="name">name</label>
+                <input formControlName="name" type="text" name="name" id="name" class="form-control">
+            </div>
+        
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input formControlName="description" type="text" name="description" id="description" class="form-control">
+            </div>
+        
+        
+            <div class="form-group">
+                <label for="cost">Cost</label>
+                <input formControlName="cost" type="text" name="cost" id="cost" class="form-control">
+            </div>
+            <button (invalid)="costForm.invalid" class="my-3" mat-raised-button color="primary">Create Package Type</button>   
+        </form>        
+    </div>
+</div>

@@ -35,8 +35,8 @@ import { CreatePackageTypeComponent } from './components/package/create-package-
 import { CreateDestinationsComponent } from './components/destinations/create-destinations/create-destinations.component';
 import { DestinationsComponent } from './components/destinations/destinations/destinations.component';
 import { PackagesComponent } from './components/package/packages/packages.component';
-
-
+import { MatIconModule } from '@angular/material/icon';
+import { CreateCostComponent } from './components/transport/create-cost/create-cost.component';
 
 
 @NgModule({
@@ -57,7 +57,8 @@ import { PackagesComponent } from './components/package/packages/packages.compon
     CreatePackageTypeComponent,
     CreateDestinationsComponent,
     DestinationsComponent,
-    PackagesComponent
+    PackagesComponent,
+    CreateCostComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +78,8 @@ import { PackagesComponent } from './components/package/packages/packages.compon
     HttpClientModule,
     MatListModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

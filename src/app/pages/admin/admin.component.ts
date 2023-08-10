@@ -12,6 +12,8 @@ import { GetAllPackagesService } from 'src/app/services/package/get-all-packages
 import { NotificationService } from 'src/app/services/shared/notification.service';
 import { CreateTransportService } from 'src/app/services/transport/create-transport.service';
 import jwt_decode from "jwt-decode";
+import { CreateCostComponent } from 'src/app/components/transport/create-cost/create-cost.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface UserData {
   id: string;
@@ -20,6 +22,19 @@ export interface UserData {
   fruit: string;
 }
 
+export interface Transport {
+  cost: Cost[];
+  name: string;
+  description: string;
+  transport_type: string;
+  owner: number;
+}
+
+export interface Cost {
+  name: string;
+  description: string;
+  cost: number;
+}
 
 @Component({
   selector: 'app-admin',
@@ -41,6 +56,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
   transportFile!: any
   destinations: any
   packageTypes: any [] = []
+  transportCosts: any [] = []
 
   constructor(
     private createPackageTypeService: CreatePackageTypeService,
@@ -50,7 +66,8 @@ export class AdminComponent implements AfterViewInit, OnInit {
     private getAllDestinationsService: GetAllDestinationsService,
     private notificationService:NotificationService,
     private getAllPackagesService: GetAllPackagesService,
-    private createTransportService: CreateTransportService
+    private createTransportService: CreateTransportService,
+    private dialog:MatDialog
   ){
     console.log(jwt_decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTcwMjkxLCJpYXQiOjE2OTE1Njk5OTEsImp0aSI6IjkyMGRhMjU0OWE4MDRhNTQ5MGZmYzZkOTcxNzI5NDRmIiwidXNlcl9pZCI6OX0.shxpYvMfCd1e-q7J3OXSzl0gCzRd8r5IMy1ZYnBbz9Y'))
 
@@ -125,7 +142,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
   transportForm = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required),
+    cost: new FormControl([], Validators.required),
     transport_type: new FormControl('', Validators.required),
     owner: new FormControl('', Validators.required)
   })
@@ -173,9 +190,11 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
 
   transportFormSubmit(){
-    console.log(this.transportForm.value)
-    this.createTransportService.createTransport(this.transportForm.value, this.transportFile).subscribe((res) => {
-      console.log(res)
+    this.createTransportService.createTransport(this.transportForm.value, this.transportCosts).subscribe((res) => {
+      if(res) {
+        this.notificationService.sendSuccessNotification('transport created')
+        this.transportForm.reset()
+      }
     })
   }
 
@@ -198,6 +217,22 @@ export class AdminComponent implements AfterViewInit, OnInit {
     handleImageError(event: any) {
       event.target.src = '../../../assets/images/beach.jpeg';
       // Provide a fallback image URL
+  }
+
+
+  openDialog() {
+     const dialogRef = this.dialog.open(CreateCostComponent, {
+      width: '60%',     
+     })
+     
+     dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        result.cost = parseInt(result.cost, 10) || 0
+        this.transportCosts.push(result)
+      }
+      console.log(this.transportCosts)
+
+     })
   }
 
 }

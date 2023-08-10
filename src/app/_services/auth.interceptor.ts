@@ -24,7 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
           take(1),
           switchMap((res: any) => {
             let modifiedReq = request.clone({
-              headers: request.headers.append('Authorization', `Bearer ${res?.access}`)
+              headers: request.headers.set('Authorization', `Bearer ${res?.access}`)
             })
             return next.handle(modifiedReq)
           })

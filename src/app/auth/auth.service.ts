@@ -22,8 +22,6 @@ export class AuthService {
       const refresh_token = (<string>localStorage.getItem(this.REFRESH_TOKEN))
       this.userDataSubject.next({access_token, refresh_token})      
     }
-
-
   }
 
   get userData() {
