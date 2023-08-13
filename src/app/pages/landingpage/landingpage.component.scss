@@ -3,7 +3,7 @@
     margin-top: 100px;
     
     .container-fluid.bg {
-        background-image: url(../../../assets/images/header.jpg);
+        background-image: url(../../../assets/images/hd.jpg);
         position: relative;
         background-size: cover;
         background-position: center;
@@ -176,7 +176,12 @@
         padding: 0;
         max-width: 370px;
         flex: 33.333%;    
-        height: 678px;            
+        height: 678px;      
+        
+        
+        img {
+            border-radius: 5px 5px 0 0;
+        }
 
 
         .img {

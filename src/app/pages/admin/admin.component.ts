@@ -11,9 +11,10 @@ import { CreatePackageTypeService } from 'src/app/services/package/create-packag
 import { GetAllPackagesService } from 'src/app/services/package/get-all-packages.service';
 import { NotificationService } from 'src/app/services/shared/notification.service';
 import { CreateTransportService } from 'src/app/services/transport/create-transport.service';
-import jwt_decode from "jwt-decode";
 import { CreateCostComponent } from 'src/app/components/transport/create-cost/create-cost.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CreateHotelService } from 'src/app/services/hotel/create-hotel.service';
+import { GetAllHotelsService } from 'src/app/services/hotel/get-all-hotels.service';
 
 export interface UserData {
   id: string;
@@ -58,6 +59,10 @@ export class AdminComponent implements AfterViewInit, OnInit {
   packageTypes: any [] = []
   transportCosts: any [] = []
 
+  //hotel variables
+  hotelImage!: any 
+  hotelVideo!: any
+
   constructor(
     private createPackageTypeService: CreatePackageTypeService,
     private createPackageOptionService:CreatePackageOptionService,
@@ -67,9 +72,9 @@ export class AdminComponent implements AfterViewInit, OnInit {
     private notificationService:NotificationService,
     private getAllPackagesService: GetAllPackagesService,
     private createTransportService: CreateTransportService,
-    private dialog:MatDialog
-  ){
-    console.log(jwt_decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNTcwMjkxLCJpYXQiOjE2OTE1Njk5OTEsImp0aSI6IjkyMGRhMjU0OWE4MDRhNTQ5MGZmYzZkOTcxNzI5NDRmIiwidXNlcl9pZCI6OX0.shxpYvMfCd1e-q7J3OXSzl0gCzRd8r5IMy1ZYnBbz9Y'))
+    private dialog:MatDialog,
+    private createHotelService:CreateHotelService,
+    private getAllHotelsService: GetAllHotelsService){
 
   }
 
@@ -88,7 +93,12 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
       this.packagesDataSource.data = res
     })
-    
+
+
+    this.getAllHotelsService.getHotels().subscribe((res) => {
+      console.log(res, 'hotels recieved')
+    })
+
   }
 
 
@@ -99,6 +109,15 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
   onImageSelect(event: any){
     this.transportFile = event.target.files[0]
+  }
+
+
+  onHotelImageSelect(event: any) {
+    this.hotelImage = event.target.files[0]
+  }
+
+  onHotelVideoSelect(event: any) {
+    this.hotelVideo = event.target.files[0]
   }
 
 
@@ -145,6 +164,17 @@ export class AdminComponent implements AfterViewInit, OnInit {
     cost: new FormControl([], Validators.required),
     transport_type: new FormControl('', Validators.required),
     owner: new FormControl('', Validators.required)
+  })
+
+
+  hotelForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      image: new FormControl('', Validators.required),
+      video: new FormControl('',Validators.required),
+      cost: new FormControl('', Validators.required),
+      owner: new FormControl('', Validators.required),
+      ward: new FormControl('',Validators.required)
   })
 
   //functions 
@@ -194,6 +224,18 @@ export class AdminComponent implements AfterViewInit, OnInit {
       if(res) {
         this.notificationService.sendSuccessNotification('transport created')
         this.transportForm.reset()
+      }
+    })
+  }
+
+
+  hotelFormSubmit(){
+    this.createHotelService.createHotel(this.hotelForm.value, this.hotelImage, this.hotelVideo).subscribe((res) => {
+      if(res) {
+        this.notificationService.sendSuccessNotification('hotel created')
+        this.hotelForm.reset()
+      } else {
+        this.notificationService.sendErrorNotification('something went wrong, try again')
       }
     })
   }

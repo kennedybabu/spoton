@@ -21,16 +21,16 @@ export class LandingpageComponent {
   
   constructor(
     public dialog: MatDialog,
-    private router:Router){}
+    private router:Router){
+    }
 
   openDialog() {
     const dialogRef = this.dialog.open(VideosComponent, {
-      width: '80%',
-      height: '75%'
+      width: '75%',
+      height: 'auto'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 

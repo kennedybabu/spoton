@@ -76,6 +76,7 @@ export class AuthService {
 
 
   generateNewTokens(): Observable<HttpEvent<any>> {
+    console.log('called')
     const refresh_token = localStorage.getItem('refresh_token')
 
     return this.http.post('http://109.123.254.230:8888/accounts/token/refresh/', {
@@ -83,6 +84,7 @@ export class AuthService {
     }).pipe(
       map((res: any) => {
         const access_token = res.access 
+        console.log(access_token)
         const refresh_token = res.refresh
         this.userDataSubject.next({ access_token, refresh_token})
         localStorage.setItem(this.ACCESS_TOKEN, access_token)

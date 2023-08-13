@@ -6,6 +6,10 @@ import { TripSearchComponent } from './pages/trip-search/trip-search.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { BookingComponent } from './pages/booking/booking.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { RoleBaseGuard } from './_guard/role-base.guard';
+import { HotelComponent } from './pages/hotel/hotel.component';
+
+
 
 const routes: Routes = [ 
   {path:'', redirectTo: '/landingpage', pathMatch: 'full'},
@@ -13,8 +17,9 @@ const routes: Routes = [
   {path:'trip-search/:type', component: TripSearchComponent},
   {path:'login', component:LoginComponent},
   {path:'booking', component: BookingComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [RoleBaseGuard]},
   {path:'signup', component: SignupComponent},
+  {path: 'hotel/:id', component: HotelComponent},
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)

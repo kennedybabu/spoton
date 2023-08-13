@@ -1,19 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import jwt_decode from "jwt-decode";
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateTransportService {
+
+
   file!: any
-  constructor(private http:HttpClient) { }
+  userId!: any
+
+
+  constructor(private http:HttpClient) {
+    const token = localStorage.getItem('access') || ''
+
+    this.userId = jwt_decode(token)
+
+   }
   
   createTransport(formValue:any, costs: any): Observable<any> {
-    const formData = new FormData()
-
-    console.log(costs, '====')
-
     let jsonObject = {
       cost: costs,
       name: formValue.name,
@@ -22,13 +31,13 @@ export class CreateTransportService {
       owner: formValue.owner
     }
 
-    formData.append('name', formValue.name)
-    formData.append('description', formValue.name)
-    formData.append('cost', costs)
-    formData.append('transport_type', formValue.transport_type)
-    formData.append('owner', '1')
+    // formData.append('name', formValue.name)
+    // formData.append('description', formValue.name)
+    // formData.append('cost', costs)
+    // formData.append('transport_type', formValue.transport_type)
+    // formData.append('owner', '1')
 
-    console.log(jsonObject)
+    // console.log(jsonObject)
 
   return this.http.post('http://109.123.254.230:8888/transport/create', jsonObject)
 }

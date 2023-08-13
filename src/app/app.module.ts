@@ -37,7 +37,9 @@ import { DestinationsComponent } from './components/destinations/destinations/de
 import { PackagesComponent } from './components/package/packages/packages.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateCostComponent } from './components/transport/create-cost/create-cost.component';
-
+import { HotelsComponent } from './components/hotels/hotels.component';
+import { HotelComponent } from './pages/hotel/hotel.component';
+import { CreateHotelImagesComponent } from './components/hotels/create-hotel-images/create-hotel-images.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,10 @@ import { CreateCostComponent } from './components/transport/create-cost/create-c
     CreateDestinationsComponent,
     DestinationsComponent,
     PackagesComponent,
-    CreateCostComponent
+    CreateCostComponent,
+    HotelsComponent,
+    HotelComponent,
+    CreateHotelImagesComponent
   ],
   imports: [
     BrowserModule,

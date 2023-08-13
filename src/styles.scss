@@ -43,10 +43,38 @@ body {
             content: "";
             position: absolute;
             width: 30%;
-            height: 3px;
+            height: 2px;
             left: 0;
             bottom: 0;
             background-color: #c2185b;
         }
+    }
+
+    .form-wrapper {
+      input {
+         padding: .7rem;
+         margin: .5rem 0;
+         border: 1px solid rgb(160, 160, 160);
+
+         &:hover, &:active, &:focus {
+            border: 1px solid #c2185b;
+            outline: none;
+         }
+
+
+
+      }
+
+
+      table {
+         background-color: rgb(145, 145, 145)!important;
+      }
+
+      mat-paginator {
+         background-color: rgb(145, 145, 145)!important;
+      }
+    }
+    .mdc-dialog__surface {
+      background-color: rgb(247, 247, 247)!important;
     }
  }
