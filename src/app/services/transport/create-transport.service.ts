@@ -28,7 +28,7 @@ export class CreateTransportService {
       name: formValue.name,
       description: formValue.description,
       transport_type: formValue.transport_type,
-      owner: formValue.owner
+      owner: this.userId.user_id
     }
 
     // formData.append('name', formValue.name)

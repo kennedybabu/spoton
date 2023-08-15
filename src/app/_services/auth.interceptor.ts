@@ -12,20 +12,27 @@ import { AuthService } from '../auth/auth.service';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService:AuthService) {}
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
       const token = localStorage.getItem('access')
       if (token) {
+
         if(this.authService.isAuthTokenValid(token)) {
           let modifiedReq = request.clone({ 
             headers: request.headers.set('Authorization', 'Bearer ' + token) 
           })
+
           return next.handle(modifiedReq)
         }
-          return this.authService.generateNewTokens().pipe(
+
+           this.authService.generateNewTokens().pipe(
             take(1),
             switchMap((res: any) => {
+            let token = res.access
             let modifiedReq = request.clone({
-              headers: request.headers.set('Authorization', `Bearer ${res?.access}`)
+              headers: request.headers.set('Authorization', 'Bearer ' + token)
             })
+            console.log('hi')
+
             return next.handle(modifiedReq)
           })
         )

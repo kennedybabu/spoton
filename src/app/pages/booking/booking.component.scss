@@ -59,6 +59,7 @@
                 height: 585px;
                 position: absolute;
                 top: -2rem;
+                overflow: hidden!important;
             }
 
 
@@ -83,6 +84,16 @@
 
     .hide::-webkit-scrollbar {
         display: none;
+    }
+
+
+    .mat-mdc-tab-body-content {
+        height: 100%;
+        overflow: hidden!important;
+    }
+
+    mat-tab-body {
+        overflow: hidden!important;
     }
 
 }

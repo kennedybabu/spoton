@@ -16,9 +16,10 @@ export class CreatePackageOptionService {
           "name": formValue.name,
           "description": formValue.description,
           "max_occupants": formValue.max_occupants,
-          "package": formValue.package,
-          "transport": formValue.transport,
-          "hotel": formValue.hotel
+          "transport": +formValue.transport,
+          "hotel": +formValue.hotel,
+          "package": +formValue.type,
+
         },
      
     }

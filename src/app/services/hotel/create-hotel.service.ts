@@ -26,7 +26,7 @@ export class CreateHotelService {
     formData.append('image', hotelImage)
     formData.append('video', hotelVideo)
     formData.append('cost', formValue.cost)
-    formData.append('owner', this.userId)
+    formData.append('owner', this.userId.user_id)
 
     return this.http.post('http://109.123.254.230:8888/hotels/create', formData)
   }

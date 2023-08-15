@@ -192,7 +192,7 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>Type</label>
+                                    <label>Package</label>
                                     <select formControlName="package" class="form-select" aria-label="Default select example">
                                         <option selected>Open this select menu</option>
                                         <option *ngFor="let package of packageTypes" [value]="package.id">{{package.name}}</option>
@@ -200,13 +200,19 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label for="transport">Transport</label>
-                                    <input formControlName="transport" type="text" name="description" id="description" class="form-control">
+                                    <label>Transport</label>
+                                    <select formControlName="transport" class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option *ngFor="let trans of allTransports" [value]="trans.id">{{trans.name}}</option>
+                                    </select>
                                 </div>
         
                                 <div class="form-group">
-                                    <label for="hotel">Hotel</label>
-                                    <input formControlName="hotel" type="text" name="hotel" id="hotel" class="form-control">
+                                    <label>Hotel</label>
+                                    <select formControlName="hotel" class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option *ngFor="let hotel of hotels" [value]="hotel.id">{{hotel.name}}</option>
+                                    </select>
                                 </div>
 
                                 <button class="my-3" mat-raised-button color="primary">Create Package Option</button>   

@@ -55,11 +55,11 @@ export class AuthService {
 
 
   get isAuthenticated(): boolean {
-    const access_token = this.userDataSubject.value?.refresh_token 
-    if(!access_token){
+    const refresh_token = this.userDataSubject.value?.refresh_token 
+    if(!refresh_token){
       return false
     }
-    return access_token
+    return this.isAuthTokenValid(refresh_token)
   }
 
 
@@ -76,19 +76,18 @@ export class AuthService {
 
 
   generateNewTokens(): Observable<HttpEvent<any>> {
-    console.log('called')
     const refresh_token = localStorage.getItem('refresh_token')
+    console.log('called')
 
     return this.http.post('http://109.123.254.230:8888/accounts/token/refresh/', {
       "refresh": refresh_token
     }).pipe(
       map((res: any) => {
+        console.log('called', 'after')
         const access_token = res.access 
         console.log(access_token)
-        const refresh_token = res.refresh
-        this.userDataSubject.next({ access_token, refresh_token})
+        this.userDataSubject.next({ access_token})
         localStorage.setItem(this.ACCESS_TOKEN, access_token)
-        localStorage.setItem(this.REFRESH_TOKEN, refresh_token)
         return res
       })
     )

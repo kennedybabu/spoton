@@ -40,6 +40,17 @@ import { CreateCostComponent } from './components/transport/create-cost/create-c
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { CreateHotelImagesComponent } from './components/hotels/create-hotel-images/create-hotel-images.component';
+import { HotelAmenityTileComponent } from './components/hotels/hotel-amenity-tile/hotel-amenity-tile.component';
+import { TestimonialsComponent } from './components/hotels/testimonials/testimonials.component';
+import { CreateTestimonialComponent } from './components/hotels/create-testimonial/create-testimonial.component';
+import { HotelRoomTileComponent } from './components/hotels/hotel-room-tile/hotel-room-tile.component';
+import { CreateHotelRoomTypeComponent } from './components/hotels/create-hotel-room-type/create-hotel-room-type.component';
+import { PackageTileComponent } from './components/package-tile/package-tile.component';
+import { InterceptorService } from './services/loader/interceptor.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+
 
 @NgModule({
   declarations: [
@@ -63,7 +74,13 @@ import { CreateHotelImagesComponent } from './components/hotels/create-hotel-ima
     CreateCostComponent,
     HotelsComponent,
     HotelComponent,
-    CreateHotelImagesComponent
+    CreateHotelImagesComponent,
+    HotelAmenityTileComponent,
+    TestimonialsComponent,
+    CreateTestimonialComponent,
+    HotelRoomTileComponent,
+    CreateHotelRoomTypeComponent,
+    PackageTileComponent
   ],
   imports: [
     BrowserModule,
@@ -84,10 +101,13 @@ import { CreateHotelImagesComponent } from './components/hotels/create-hotel-ima
     MatListModule,
     MatPaginatorModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

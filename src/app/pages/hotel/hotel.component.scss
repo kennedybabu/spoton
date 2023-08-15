@@ -1,12 +1,10 @@
 .container-fluid {
     min-height: 100vh;
-    margin-top: 100px;
     background-color: rgb(248, 248, 248);
-    width: 100vw;
+    max-width: 100vw;
+    padding: 2rem 0 0 0;
 
     .row {
-        height: 100%;
-
 
         .header {
             height: 80vh;
@@ -20,10 +18,21 @@
                 position: absolute;
                 bottom: 2rem;
                 right: 2rem;
-                border: none;
-                outline: none;
-                border-radius: 5px;
-                background-color: rgba(255, 255, 255, 0.452);
+                
+
+                button {
+                    border: none;
+                    outline: none;
+                }
+
+
+                #pic-btn {
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    background-color: rgba(255, 255, 255, 0.452);
+
+                }
             }
 
             .overlay {
@@ -70,6 +79,7 @@
             .rating {
                 height: 70px;
                 display: flex;
+                
 
                 div {
                     display: flex;
@@ -89,11 +99,15 @@
 
         #rooms {
             background-color: #f6f1f0;
-            padding-top: 100px;
+            padding: 100px 10px;          
+        }
+    }
 
-            .images {
-                height: 467px;
-            }
+
+    #tile {
+        .rounded { 
+            background-size: cover;
+            background-position: center;
         }
     }
 }

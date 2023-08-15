@@ -5,18 +5,22 @@
                 <small style="letter-spacing: 2px;">Resort & Spa Hotel</small> 
                 <h1 class="my-3">Stay With Us, Feel At Home</h1>
                 <button class="my-3">Explore</button>
-            </div>          
-            <button (click)="openDialog()" class="abs-btn">
-                <i style="font-size: 1.5rem;" class="bi bi-images"></i>
-            </button>
+            </div>  
+            <div class="abs-btn">
+                <button (click)="openDialog()" mat-raised-button color="warn" class="mx-2">Add Room Type</button>
+                <button mat-raised-button color="warn" (click)="openDialog()">
+                    <i style="font-size: 1.3rem;" class="bi bi-images"></i> Add Hotel Image
+                </button>
+
+            </div>        
         </div>
 
-       <div class="container">
+       <div class="container px-5">
             <div class="row" id="about" style="background-color: rgb(255, 255, 255);">
-                <div class="col-md-3">
-                    <p class="dark-text underline" style="width: max-content;">Welcome to</p>
+                <div class="col-md-2">
+                    <p class="dark-text underline" style="width: max-content;text-transform: uppercase;">Welcome to</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h3 class="dark-text" style="font-size: 35px;">Luxury Hotel</h3>
                     <p style="line-height: 30px;" class="light-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi assumenda voluptatum, officiis, consequuntur accusamus nemo porro odit voluptate expedita illo ducimus sunt cum obcaecati doloremque? Perferendis deleniti accusantium quis. Velit.</p> 
 
@@ -24,33 +28,92 @@
                         <div style="border-right: 1px solid rgb(187, 187, 187);">
                             <h1 class="dark-text mb-0" style="font-size: 1.5rem;">4.9</h1>
                         </div>
-                        <div>
-                            <small class="light-text">Rating based on 2500+ reviews</small><br>
-                            <span>stars</span>
+                        <div style="display: flex;flex-direction: column;">
+                            <small class="light-text">Rating based on 2500+ reviews</small>
+                            <div class="d-flex mb-3 " style="color: rgb(223, 223, 23);">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-3 dark-text">
-                    pics
+                <div class="col-md-5 dark-text">
+                    <div id="tile">
+                        <div class="row align-items-end justify-content-center">
+                            <div style="height: 100px;width: 100px;background-image: url(../../../assets/images/sit.jpg);" class="rounded shadow mx-3">
+
+                            </div>
+
+                            <div style="height: 180px;width: 180px;background-image: url(../../../assets/images/top.jpg)" class="rounded shadow">
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center align-items-start my-3">
+
+                            <div style="height: 180px;width: 180px;background-image: url(../../../assets/images/fountain.jpg)" class="rounded shadow mx-3">
+
+                            </div>
+
+                            <div style="height: 100px;width: 100px;background-image: url(../../../assets/images/parlour.jpg)" class="rounded shadow">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
        </div>
 
         <div id="rooms" class="dark-text">
-            <div class="top row">
-                <div class="col-md-3">
-                    <p class="dark-text underline" style="width: max-content;">Discover</p>
+            <div class="top row px-5">
+                <div class="col-md-2">
+                    <p class="dark-text underline" style="width: max-content;text-transform: uppercase;">Discover</p>
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-md-5">
                     <h2 style="font-size: 35px;">Rooms <span style="color: #c2185b;">&</span> Suites</h2>
-                    <p>Reserve the room you prefer (depending on availability). Choose rom a variety os sizes and styles.</p>
+                    <p class="light-text">Reserve the room you prefer (depending on availability). Choose rom a variety os sizes and styles. Lorem ipsum dolor sit, amet consectetur adipisicing elit. At ut similique aperiam quas!</p>
                 </div>
             </div>
 
             <div class="row images">
+                <div class="d-flex gap-5 justify-content-center" style="min-width: 100vw;">
+                    <app-hotel-room-tile></app-hotel-room-tile>
+                    <app-hotel-room-tile></app-hotel-room-tile>
+                    <app-hotel-room-tile></app-hotel-room-tile>                
+                </div>
+            </div>
+        </div>
 
+        <div>
+            <app-parallax-banner></app-parallax-banner>
+        </div>
+
+        <div class="row">
+            <div class="row px-5" style="padding-top: 80px;">
+                <div class="col-md-3">
+                    <p class="dark-text underline" style="width: max-content;text-transform: uppercase;">Our services</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="dark-text" style="font-size: 35px;">Hotel Amenities</h3>
+                    <p style="line-height: 30px;" class="light-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi assumenda voluptatum, officiis, consequuntur accusamus nemo porro odit voluptate expedita illo ducimus sunt cum obcaecati doloremque? Perferendis deleniti accusantium quis. Velit.</p> 
+                </div>
+            </div>
+
+            <div class="row pb-5" id="tiles">
+                <div class="d-flex gap-3 align-items-center justify-content-center" >
+                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
+                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
+                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
+                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
+                </div>
+            </div>
+
+            <div>
+                <app-testimonials [hotelId]="hotelId"></app-testimonials>
             </div>
         </div>
     </div>

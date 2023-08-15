@@ -15,6 +15,7 @@ import { CreateCostComponent } from 'src/app/components/transport/create-cost/cr
 import { MatDialog } from '@angular/material/dialog';
 import { CreateHotelService } from 'src/app/services/hotel/create-hotel.service';
 import { GetAllHotelsService } from 'src/app/services/hotel/get-all-hotels.service';
+import { GetAllTransportsService } from 'src/app/services/transport/get-all-transports.service';
 
 export interface UserData {
   id: string;
@@ -58,6 +59,8 @@ export class AdminComponent implements AfterViewInit, OnInit {
   destinations: any
   packageTypes: any [] = []
   transportCosts: any [] = []
+  hotels: any [] = []
+  allTransports: any = []
 
   //hotel variables
   hotelImage!: any 
@@ -74,7 +77,8 @@ export class AdminComponent implements AfterViewInit, OnInit {
     private createTransportService: CreateTransportService,
     private dialog:MatDialog,
     private createHotelService:CreateHotelService,
-    private getAllHotelsService: GetAllHotelsService){
+    private getAllHotelsService: GetAllHotelsService,
+    private getAllTransportsService: GetAllTransportsService){
 
   }
 
@@ -91,12 +95,20 @@ export class AdminComponent implements AfterViewInit, OnInit {
     this.getAllPackagesService.getPackages().subscribe((res) => {
       this.packageTypes = res
 
+      console.log(this.packageTypes)
+
       this.packagesDataSource.data = res
     })
 
 
     this.getAllHotelsService.getHotels().subscribe((res) => {
-      console.log(res, 'hotels recieved')
+      console.log('hotels')
+      this.hotels = res 
+    })
+
+
+    this.getAllTransportsService.getTransports().subscribe((res) => {
+      this.allTransports = res
     })
 
   }

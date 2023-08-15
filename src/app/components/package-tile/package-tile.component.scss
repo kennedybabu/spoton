@@ -1,0 +1,27 @@
+.container {
+    .package {
+        padding: 0;
+        max-width: 370px;
+        flex: 33.333%;    
+        height: 678px;      
+        
+        
+        img {
+            border-radius: 5px 5px 0 0;
+        }
+
+
+        .img {
+            width: 100%;
+            min-height: 270px;
+            background-position: center;
+            background-size: cover;
+        
+        }
+
+        .lower {
+            padding: 33px 35px 40px 40px; 
+
+        }
+    }
+}

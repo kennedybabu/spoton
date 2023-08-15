@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap');
 
 
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+
 
 
 html, body { height: 100%; }
@@ -74,7 +80,9 @@ body {
          background-color: rgb(145, 145, 145)!important;
       }
     }
+
+
     .mdc-dialog__surface {
-      background-color: rgb(247, 247, 247)!important;
+         background-color: rgb(247, 247, 247)!important;
     }
  }

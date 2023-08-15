@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CreateHotelImagesComponent } from 'src/app/components/hotels/create-hotel-images/create-hotel-images.component';
+import { CreateHotelRoomTypeComponent } from 'src/app/components/hotels/create-hotel-room-type/create-hotel-room-type.component';
 
 @Component({
   selector: 'app-hotel',
@@ -29,7 +30,7 @@ export class HotelComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(CreateHotelImagesComponent, {
+    const dialogRef = this.dialog.open(CreateHotelRoomTypeComponent, {
       height:'400px', width:'450px', panelClass:'dialog', data: {
         id: this.hotelId
       }

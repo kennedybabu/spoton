@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NotificationService } from './services/shared/notification.service';
+import { LoaderService } from './services/loader/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,10 @@ export class AppComponent {
   successNotification!: string
   errorNotification!: string
 
-  constructor(private notificationService:NotificationService){
+  
+
+  constructor(private notificationService:NotificationService,
+    public loaderService:LoaderService){
     this.notificationService.getSuccessNotification().subscribe((res) => {
       this.successNotification = res
 

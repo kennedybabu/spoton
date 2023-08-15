@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row px-5">
+         <div class="col-md-3">
+            <p class="underline" style="width: max-content;text-transform: uppercase;">Testimonials</p>
+         </div>
+
+         <div class="col-md-5">
+            <div class="d-flex mb-3">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+            </div>
+            <h3  style="font-size: 35px;">What Client's Say?</h3>
+            <p class="mb-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam assumenda a ipsum similique modi suscipit aspernatur atque labore sunt pariatur nisi nulla, veniam, tempore error.</p>
+
+            <div class="d-flex my-3">
+                <div style="height: 50px;width: 50px;border-radius: 100%;background-color: rgb(226, 137, 137);">
+
+                </div>
+                <div class="px-3">
+                    <p class="mb-0">Nolan Kim</p>
+                    <small>Customer Review</small>
+                </div>
+            </div>
+         </div>
+
+         <div class="col-md-4">
+            <form style="color: white;" [formGroup]="rateForm" (submit)="onSubmit()">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" formControlName="name" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Comment</label>
+                    <textarea class="form-control" formControlName="description"></textarea>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Rating</label>
+                    <input type="text" placeholder="max: 5" class="form-control" formControlName="rating" />
+                </div>
+
+                <button class="btn btn-outline-light btn-sm my-2">submit review</button>
+            </form>
+         </div>
+    </div>
+
+    <!-- <small id="review" (click)="openDialog()">leave a review</small> -->
+</div>

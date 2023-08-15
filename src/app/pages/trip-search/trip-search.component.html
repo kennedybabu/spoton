@@ -5,7 +5,23 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="col-lg-8 mx-auto p-4 flex-column" id="bottom">
+        <div class="d-flex justify-content-between py-3">
+            <p class="dark-text">showing 3 reuslts</p>
 
+            <select style="width: max-content;" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="1">sort by: popularity</option>
+                <option value="2">sort by: rating</option>
+                <option value="3">sort by: latest</option>
+                <option value="3">sort by price: low to high</option>
+                <option value="3">sort by price: high to low</option>
+            </select>
+        </div>
+        <div class="d-flex gap-4 justify-content-between">
+            <app-package-tile></app-package-tile>
+            <app-package-tile></app-package-tile>
+            <app-package-tile></app-package-tile>
+        </div>
     </div>
 </div>
