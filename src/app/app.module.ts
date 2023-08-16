@@ -49,6 +49,7 @@ import { PackageTileComponent } from './components/package-tile/package-tile.com
 import { InterceptorService } from './services/loader/interceptor.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { CreateHotelAmenityComponent } from './components/hotels/create-hotel-amenity/create-hotel-amenity.component';
 
 
 
@@ -80,7 +81,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CreateTestimonialComponent,
     HotelRoomTileComponent,
     CreateHotelRoomTypeComponent,
-    PackageTileComponent
+    PackageTileComponent,
+    CreateHotelAmenityComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
+import { CreateHotelAmenityComponent } from 'src/app/components/hotels/create-hotel-amenity/create-hotel-amenity.component';
 import { CreateHotelImagesComponent } from 'src/app/components/hotels/create-hotel-images/create-hotel-images.component';
 import { CreateHotelRoomTypeComponent } from 'src/app/components/hotels/create-hotel-room-type/create-hotel-room-type.component';
 
@@ -31,6 +32,17 @@ export class HotelComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(CreateHotelRoomTypeComponent, {
+      height:'400px', width:'450px', panelClass:'dialog', data: {
+        id: this.hotelId
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+    openHotelAmenityDialog() {
+    const dialogRef = this.dialog.open(CreateHotelAmenityComponent, {
       height:'400px', width:'450px', panelClass:'dialog', data: {
         id: this.hotelId
       }
