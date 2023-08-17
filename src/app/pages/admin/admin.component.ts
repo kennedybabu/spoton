@@ -16,6 +16,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateHotelService } from 'src/app/services/hotel/create-hotel.service';
 import { GetAllHotelsService } from 'src/app/services/hotel/get-all-hotels.service';
 import { GetAllTransportsService } from 'src/app/services/transport/get-all-transports.service';
+import { CreateHotelAmenityComponent } from 'src/app/components/hotels/create-hotel-amenity/create-hotel-amenity.component';
+import { GetAllHotelAmenitiesService } from 'src/app/services/hotel/get-all-hotel-amenities.service';
+import { AddHotelAmenityService } from 'src/app/services/hotel/add-hotel-amenity.service';
+import {types} from './../../package_type'
+
 
 export interface UserData {
   id: string;
@@ -65,6 +70,10 @@ export class AdminComponent implements AfterViewInit, OnInit {
   //hotel variables
   hotelImage!: any 
   hotelVideo!: any
+  hotelAmenities: any [] = []
+  selectedAmenitiesIds: any [] = []
+
+  types = types
 
   constructor(
     private createPackageTypeService: CreatePackageTypeService,
@@ -78,7 +87,9 @@ export class AdminComponent implements AfterViewInit, OnInit {
     private dialog:MatDialog,
     private createHotelService:CreateHotelService,
     private getAllHotelsService: GetAllHotelsService,
-    private getAllTransportsService: GetAllTransportsService){
+    private getAllTransportsService: GetAllTransportsService,
+    private getAllHotelAmenitiesService:GetAllHotelAmenitiesService,
+    private addHotelAmenityService:AddHotelAmenityService){
 
   }
 
@@ -97,18 +108,20 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
       console.log(this.packageTypes)
 
-      this.packagesDataSource.data = res
     })
 
 
     this.getAllHotelsService.getHotels().subscribe((res) => {
-      console.log('hotels')
       this.hotels = res 
     })
 
 
     this.getAllTransportsService.getTransports().subscribe((res) => {
       this.allTransports = res
+    })
+
+    this.getAllHotelAmenitiesService.getAmenities().subscribe((res) => {
+      this.hotelAmenities = res
     })
 
   }
@@ -155,7 +168,8 @@ export class AdminComponent implements AfterViewInit, OnInit {
   destinationForm = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    image: new FormControl('', Validators.required)
+    image: new FormControl('', Validators.required),
+    type: new FormControl('', Validators.required)
   })
 
 
@@ -166,7 +180,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
     video: new FormControl('', Validators.required),
     overview: new FormControl('', Validators.required),
     company: new FormControl('', Validators.required),
-    packageType: new FormControl('', Validators.required)
+    destination: new FormControl('', Validators.required)
   })
 
 
@@ -180,17 +194,16 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
 
   hotelForm = new FormGroup({
+      amenities: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required),
-      video: new FormControl('',Validators.required),
       cost: new FormControl('', Validators.required),
       owner: new FormControl('', Validators.required),
-      ward: new FormControl('',Validators.required)
   })
 
-  //functions 
 
+
+  //functions
   packageTypeSubmit(){
     this.createPackageTypeService.createPackage(this.packageTypeForm.value).subscribe((res) => {
       if(res) {
@@ -212,6 +225,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
     this.createDestinationService.createDestinantion(this.destinationForm.value, this.file).subscribe((res) => {
       if(res) {
         this.getAllDestinationsService.getDestinations().subscribe((res) => {
+          this.notificationService.sendSuccessNotification('destination created')
           this.destinations = res
           console.log(this.destinations)
     
@@ -225,8 +239,15 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
 
   destinationPackageSubmit(){
+    // let destId = parseInt(this.destinationPackageForm.value.destination)
+
     this.createDestinationPackageService.createPackage(this.destinationPackageForm.value).subscribe((res) => {
-      console.log(res)
+      if(res === 'Destination Package created successfully') {
+        this.destinationPackageForm.reset()
+        this.notificationService.sendSuccessNotification('destination package created')
+      } else {
+        this.notificationService.sendErrorNotification('seomthing went wrong, try again')
+      }
     })
   }
 
@@ -242,7 +263,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
 
 
   hotelFormSubmit(){
-    this.createHotelService.createHotel(this.hotelForm.value, this.hotelImage, this.hotelVideo).subscribe((res) => {
+    this.createHotelService.createHotel(this.hotelForm.value, this.selectedAmenitiesIds).subscribe((res) => {
       if(res) {
         this.notificationService.sendSuccessNotification('hotel created')
         this.hotelForm.reset()
@@ -287,6 +308,42 @@ export class AdminComponent implements AfterViewInit, OnInit {
       console.log(this.transportCosts)
 
      })
+  }
+
+  openHotelAmenityDialog() {
+    const dialogRef = this.dialog.open(CreateHotelAmenityComponent, {
+      height:'400px', width:'450px', panelClass:'dialog'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  amenityForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required)
+  })
+
+  onSubmit(){
+    this.addHotelAmenityService.addAmenity(this.amenityForm.value).subscribe((res) => {
+      console.log(res)
+      if(res === 'Hotel amenity created successfully') {
+        this.notificationService.sendSuccessNotification('amenity created')
+      } else {
+        this.notificationService.sendErrorNotification('something went wrong, try again')
+      }
+    })
+  }
+
+  toggleSelection(amenity: any){
+    const index = this.selectedAmenitiesIds.indexOf(amenity) 
+
+    if(index > -1) {
+      this.selectedAmenitiesIds.splice(index, 1)
+    } else {
+      this.selectedAmenitiesIds.push(amenity)
+    }
+
   }
 
 }

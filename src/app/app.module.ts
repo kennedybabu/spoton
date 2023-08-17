@@ -50,12 +50,14 @@ import { InterceptorService } from './services/loader/interceptor.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CreateHotelAmenityComponent } from './components/hotels/create-hotel-amenity/create-hotel-amenity.component';
-
+import { HotelAmenitiesComponent } from './components/hotels/hotel-amenities/hotel-amenities.component';
+import { RemoveSpacePipe } from './remove-space-pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    RemoveSpacePipe,
     NavbarComponent,
     LandingpageComponent,
     FooterComponent,
@@ -82,7 +84,8 @@ import { CreateHotelAmenityComponent } from './components/hotels/create-hotel-am
     HotelRoomTileComponent,
     CreateHotelRoomTypeComponent,
     PackageTileComponent,
-    CreateHotelAmenityComponent
+    CreateHotelAmenityComponent,
+    HotelAmenitiesComponent,
   ],
   imports: [
     BrowserModule,

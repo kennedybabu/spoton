@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CreateHotelAmenityComponent } from 'src/app/components/hotels/create-hotel-amenity/create-hotel-amenity.component';
-import { CreateHotelImagesComponent } from 'src/app/components/hotels/create-hotel-images/create-hotel-images.component';
 import { CreateHotelRoomTypeComponent } from 'src/app/components/hotels/create-hotel-room-type/create-hotel-room-type.component';
+import { GetAllHotelAmenitiesService } from 'src/app/services/hotel/get-all-hotel-amenities.service';
 
 @Component({
   selector: 'app-hotel',
@@ -14,10 +14,12 @@ export class HotelComponent implements OnInit {
 
 
   hotelId!: number
+  hotelAmenities: any [] = []
   
 
   constructor(private route:ActivatedRoute,
-    private dialog:MatDialog){}
+    private dialog:MatDialog,
+    private getAllHotelAmenitiesService:GetAllHotelAmenitiesService){}
 
 
   ngOnInit(): void {
@@ -27,7 +29,10 @@ export class HotelComponent implements OnInit {
         this.hotelId = +params['id']
       }
     )
-    console.log(this.hotelId)
+
+    // this.getAllHotelAmenitiesService.getAmenities().subscribe((res) => {
+    //   this.hotelAmenities = res
+    // })
   }
 
   openDialog() {

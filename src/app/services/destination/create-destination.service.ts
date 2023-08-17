@@ -20,6 +20,9 @@ export class CreateDestinationService {
 
     formData.append('description', formValue.description)
 
+    formData.append('type', formValue.type)
+
+
     
     return this.http.post('http://109.123.254.230:8888/services/destinations/create', formData)
   }

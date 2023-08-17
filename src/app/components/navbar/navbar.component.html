@@ -5,15 +5,15 @@
         </div>
 
         <div class="col-md-6 col-lg-3" id="nav-list">
-            <div>
-                <button mat-button color="black" [matMenuTriggerFor]="home">Home</button>
+            <div *ngFor="let link of packageTypes">
+                <button mat-button color="black" [matMenuTriggerFor]="link.name">{{link.name }}</button>
                 <mat-menu #home="matMenu">
                   <button mat-menu-item>Tour Packages</button>
                   <button mat-menu-item>Gallery</button>
                 </mat-menu>
             </div>
 
-            <div>
+            <!-- <div>
                 <button mat-button color="black" [matMenuTriggerFor]="destination">Destination</button>
                 <mat-menu #destination="matMenu">
                   <button (click)="searchTrips('africa-holidays')" mat-menu-item>Africa Holidays</button>
@@ -74,7 +74,7 @@
 
             <div>
                 <button (click)="searchTrips('team-building')" mat-button color="black">TeamBuilding</button>
-            </div>
+            </div> -->
         </div>
 
         <div class="col-6 col-lg-2" id="end">

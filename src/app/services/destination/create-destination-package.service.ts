@@ -11,18 +11,21 @@ export class CreateDestinationPackageService {
 
   createPackage(formValue:any): Observable<any> {
 
-    let jsonObject = {
-      "requestObject": {
-          "name": formValue.name,
-          "description": formValue.description,
-          "image": formValue.image,
-          "video": formValue.video,
-          "overview": formValue.overview,
-          "company": formValue.company,
-          "package_type": formValue.package_type
-        },
-     
-    }
-    return this.http.post('http://109.123.254.230:8888/services/packagetype/create', jsonObject)
+
+    const formData = new FormData()
+
+    formData.append("name", formValue.name)
+    formData.append("description", formValue.description)
+    formData.append("image", formValue.image)
+    formData.append("video", formValue.video)
+    formData.append("overview", formValue.overview)
+    formData.append("company", formValue.company)
+    formData.append("destination", formValue.destination)
+
+    const destinationId = parseInt(formValue.destination, 10)
+    formData.append('destination', destinationId.toString())
+
+
+    return this.http.post('http://109.123.254.230:8888/services/destinationpackage/create', formData)
   }
 }

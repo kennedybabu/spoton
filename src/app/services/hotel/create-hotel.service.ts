@@ -18,16 +18,25 @@ export class CreateHotelService {
       this.userId = jwt_decode(token)
    }
 
-  createHotel(formValue:any, hotelImage: any, hotelVideo: any): Observable<any> {
+  createHotel(formValue:any, selectedAmenitiesIds: any): Observable<any> {
 
     const formData = new FormData()
+
     formData.append('name', formValue.name)
     formData.append('description', formValue.description)
-    formData.append('image', hotelImage)
-    formData.append('video', hotelVideo)
     formData.append('cost', formValue.cost)
     formData.append('owner', this.userId.user_id)
+    formData.append('amenities', selectedAmenitiesIds)
 
-    return this.http.post('http://109.123.254.230:8888/hotels/create', formData)
+
+    let jsonObject = {
+      'name': formValue.name,
+      'description':formValue.description,
+      'cost' : +formValue.cost,
+      'owner': +this.userId.user_id,
+      'amenities': selectedAmenitiesIds
+    }
+
+    return this.http.post('http://109.123.254.230:8888/hotels/create', jsonObject)
   }
 }
