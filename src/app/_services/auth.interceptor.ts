@@ -27,11 +27,11 @@ export class AuthInterceptor implements HttpInterceptor {
            this.authService.generateNewTokens().pipe(
             take(1),
             switchMap((res: any) => {
+              console.log(res, 'clalededads')
             let token = res.access
             let modifiedReq = request.clone({
               headers: request.headers.set('Authorization', 'Bearer ' + token)
             })
-            console.log('hi')
 
             return next.handle(modifiedReq)
           })

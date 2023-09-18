@@ -1,0 +1,78 @@
+.container-fluid {
+    min-height: 70vh;
+    background-color: #fefefe;
+    margin-top: 100px;
+
+    .row {
+        .header {
+            height: 470px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+
+            .overlay {
+                display: flex;
+                align-items: center;
+                padding: 2rem;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100%;
+                background-color: rgba(48, 48, 48, 0.329);
+                z-index: 2;
+
+                .abs-btn {
+                    position: absolute;
+                    bottom: 2rem;
+                    right: 2rem;
+                    
+    
+                    button {
+                        border: none;
+                        outline: none;
+                    }
+    
+    
+                    #pic-btn {
+                        border: none;
+                        outline: none;
+                        border-radius: 5px;
+                        background-color: rgba(255, 255, 255, 0.452);
+    
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    #amenity {
+        border: 1px solid rgb(207, 207, 207);
+        width: 100%;
+        height: 180px;
+        cursor: pointer;
+        transition: all ease .2s;
+        position: relative;
+
+        .header {
+            background-size: cover;
+            background-position: center;
+            width: 300px;
+
+        }
+
+
+        &:hover {
+            transform: scale(1.01);
+        }
+
+
+        #add-btn {
+            position: absolute;
+            right: 1rem;
+            top: 10px;
+        }
+    }
+}

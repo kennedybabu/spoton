@@ -2,12 +2,12 @@ import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import jwt_decode from "jwt-decode";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
 
 
   ACCESS_TOKEN = 'access'
@@ -16,7 +16,7 @@ export class AuthService {
   private userDataSubject: BehaviorSubject<any> = new BehaviorSubject(null)
   userData$: Observable<any> = this.userDataSubject.asObservable()
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient, private router:Router) { 
     if(localStorage.getItem(this.ACCESS_TOKEN) && localStorage.getItem(this.REFRESH_TOKEN)) {
       const access_token = (<string>localStorage.getItem(this.ACCESS_TOKEN))
       const refresh_token = (<string>localStorage.getItem(this.REFRESH_TOKEN))
@@ -50,6 +50,7 @@ export class AuthService {
   logout(){
     localStorage.removeItem(this.ACCESS_TOKEN)
     localStorage.removeItem(this.REFRESH_TOKEN)
+    this.router.navigate(['/'])
     this.userDataSubject.next(null)
   }
 

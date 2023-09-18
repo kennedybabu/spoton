@@ -53,7 +53,7 @@
     <div class="container-fluid dark-text" >
         <div class="row pt-3 shadow-sm rounded-sm justify-content-center" id="why-section">
             <div class="row" style="padding-top: 5rem;">
-                <small class="ligh-text text-center">Kenya's Leading Travel</small>
+                <small class="light-text text-center">Kenya's Leading Travel</small>
                 <h1 style="font-size: 50px;" class="text-center header-font">Why Travel with Spoton?</h1>
             </div>
             <div class="row gap-3 justify-content-center">
@@ -159,7 +159,7 @@
         </div>
         <div class="row my-3  mx-auto justify-content-center gap-5 px-4" style="flex-wrap: wrap;display: flex;">
 
-            <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="dubai">
+            <!-- <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="dubai">
                 <div class="img p-0">
                     <img class="img-fluid" src="../../../assets/images/dubai.jpeg" alt="">
                 </div>
@@ -169,7 +169,10 @@
 
                         </div>
                         <div>
-                            <p class="mb-0">1 Review</p>
+                            <i class="bi bi-star-fill" style="color: orange;"></i>
+                            <i class="bi bi-star-fill" style="color: orange;"></i>
+                            <i class="bi bi-star-fill" style="color: orange;"></i>
+                            <i class="bi bi-star-fill" style="color: orange;"></i>
                         </div>
                     </div>
 
@@ -198,9 +201,19 @@
                         <button (click)="bookTour()" style="width: max-content;" mat-raised-button color="primary">Book Now</button>
                     </div>
                 </div>
+            </div> -->
+
+            <div class="d-flex gap-3 flex-wrap justify-content-center" style="padding:0 100px;">
+                <app-package-tile [option]="option" *ngFor="let option of destPackages"></app-package-tile>
+                <!-- <app-package-tile></app-package-tile>
+                <app-package-tile></app-package-tile>
+                <app-package-tile></app-package-tile>
+                <app-package-tile></app-package-tile>
+                <app-package-tile></app-package-tile> -->
             </div>
 
-            <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="mara" style="width: 370px;">
+
+            <!-- <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="mara" style="width: 370px;">
                 <div class="img">
                     <img  class="img-fluid" src="../../../assets/images/mara.jpeg" alt="">
                 </div>
@@ -239,9 +252,9 @@
                         <button (click)="bookTour()" style="width: max-content;" mat-raised-button color="primary">Book Now</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="seychelles" style="width: 370px;">
+            <!-- <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="seychelles" style="width: 370px;">
                 <div class="img">
                     <img class="img-fluid" src="../../../assets/images/seychelles.jpeg" alt="">
                 </div>
@@ -280,9 +293,9 @@
                         <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="dubai" style="width: 370px;">
+            <!-- <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="dubai" style="width: 370px;">
                 <div class="img p-0">
                     <img class="img-fluid" src="../../../assets/images/dubai.jpeg" alt="">
                 </div>
@@ -321,9 +334,9 @@
                         <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="mara" style="width: 370px;">
+            <!-- <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="mara" style="width: 370px;">
                 <div class="img">
                     <img class="img-fluid" src="../../../assets/images/mara.jpeg" alt="">
                 </div>
@@ -362,9 +375,9 @@
                         <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="seychelles" style="width: 370px;">
+            <!-- <div class="package card shadow-sm p-0 col-12 col-md-4 col-lg-4" id="seychelles" style="width: 370px;">
                 <div class="img">
                     <img class="img-fluid" src="../../../assets/images/seychelles.jpeg" alt="">
                 </div>
@@ -403,7 +416,7 @@
                         <button style="width: max-content;" mat-raised-button color="primary">Book Now</button>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

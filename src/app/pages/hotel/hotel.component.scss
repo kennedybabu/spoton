@@ -110,4 +110,16 @@
             background-position: center;
         }
     }
+
+
+    #cover {
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all ease .2s;
+
+
+        &:hover {
+            border: 2px solid rgb(161, 161, 161);
+        }
+    }
 }

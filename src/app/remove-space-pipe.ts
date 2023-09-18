@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 
 export class RemoveSpacePipe implements PipeTransform {
-    transform(value: any, ...args: any[]) {
+    transform(value: string) {
         return value.replace(/\s/g, "")
     }
 }

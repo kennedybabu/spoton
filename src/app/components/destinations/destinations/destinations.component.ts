@@ -3,6 +3,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetAllDestinationsService } from 'src/app/services/destination/get-all-destinations.service';
+import { CreateDestPackagesComponent } from '../create-dest-packages/create-dest-packages.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-destinations',
@@ -12,9 +15,14 @@ import { GetAllDestinationsService } from 'src/app/services/destination/get-all-
 export class DestinationsComponent implements AfterViewInit, OnInit {
 
 
-  constructor(private getAllDestinationsService:GetAllDestinationsService){}
+  constructor(private getAllDestinationsService:GetAllDestinationsService,
+    private dialog:MatDialog,
+    private route:ActivatedRoute,
+    private router:Router){}
 
   destinations: any [] = []
+  destinationId!: number
+  // @Input() destinations: any [] = []
 
   ngOnInit(): void {
     this.getAllDestinationsService.getDestinations().subscribe((res) => {
@@ -23,6 +31,16 @@ export class DestinationsComponent implements AfterViewInit, OnInit {
 
       this.dataSource.data = res
     })
+
+    
+    this.route.params.subscribe(
+      (params:Params) => {
+        this.destinationId = +params['id']
+      }
+    )
+
+    console.log('id', this.destinationId)
+
   }
 
 
@@ -49,8 +67,24 @@ export class DestinationsComponent implements AfterViewInit, OnInit {
     }
   }
 
+
+  viewDestination(id: number){
+    this.router.navigate(['destination', id])
+  }
+
     handleImageError(event: any) {
       event.target.src = '../../../assets/images/beach.jpeg';
       // Provide a fallback image URL
+  }
+
+  openDialog(id: number) {
+    const dialogRef = this.dialog.open(CreateDestPackagesComponent, {
+      width: '80%', height:'90%', data: {
+        destinationId :id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 }

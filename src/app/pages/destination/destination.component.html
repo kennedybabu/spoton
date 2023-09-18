@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="header" style="background-image: url(../../../assets/images/hotel.jpeg);">
+            <div class="overlay">
+                <h2 style="font-size: 1.3rem;">{{destination?.name}}</h2>
+
+                <div class="abs-btn">
+                    <button (click)="openHotelAmenityDialog()"  mat-raised-button color="warn">Add Destination Package</button>
+                    <!-- <button  mat-raised-button color="warn" class="mx-2">Add Room Type</button> -->
+                </div> 
+            </div>
+        </div>
+
+        <div class="row p-3">
+            <div class="col-md-2">
+                <p class="dark-text underline" style="width: max-content;text-transform: uppercase;">Welcome to</p>
+            </div>
+
+            <div class="col-md-6">
+                <h3 class="dark-text" style="font-size: 35px;">{{destination?.name}}</h3>
+                <p style="line-height: 30px;" class="light-text">{{destination?.description}} - Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi assumenda voluptatum, officiis, consequuntur accusamus nemo porro odit voluptate expedita illo ducimus sunt cum obcaecati doloremque? Perferendis deleniti accusantium quis. Velit.</p> 
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+        <div class="row dark-text pt-5">
+            <div class="col-md-2">
+                <p class="dark-text underline" style="width: max-content;text-transform: uppercase;">Destination Packages</p>
+            </div>
+
+            <div class="col-md-6">
+                <h4 class="dark-text" style="font-size: 35px;">Packages</h4>
+                <!-- <p style="line-height: 30px;" class="light-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi assumenda voluptatum, officiis, consequuntur accusamus nemo porro odit voluptate expedita illo ducimus sunt cum obcaecati doloremque? Perferendis deleniti accusantium quis. Velit.</p>  --> 
+                <div>
+                    <div id="amenity" class="my-1 d-flex" *ngFor="let package of destinationPackages">
+                        <div class="header" style="width: 40%;height: 100%;background-image: url(../../../assets/images/egypt.jpeg);">
+                        </div>
+                        <div class="p-3" style="width: 100%;">
+                            <div class="d-flex flex-row-reverse">
+                                <button (click)="openPackageOptionDialog()"  mat-raised-button color="warn">
+                                    <i id="btn" style="font-size: 1rem;" class="bi bi-plus-circle"></i>
+                                    Add Package Options
+                                </button>
+                            </div>
+                            <p class="mb-0 light-text">{{package?.company}}</p>
+                            <h3 class="mb-0 dark-text">{{package?.name}}</h3>
+                            <small class="light-text">{{package?.description}}</small>
+                            <div class="row">
+                              
+                                <small>Options</small>
+                                <div class="col-6 col-md-3 col-lg-2">
+                                    <ul>
+                                        <li>wifi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-package-tile',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./package-tile.component.scss']
 })
 export class PackageTileComponent {
+
+  constructor(
+    private router:Router
+  ){}
+
+  @Input() option!: any 
+
+
+  bookPackage() {
+    this.router.navigate(['booking', this.option.id])
+  }
 
 }

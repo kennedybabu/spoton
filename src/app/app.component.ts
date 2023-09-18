@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationService } from './services/shared/notification.service';
 import { LoaderService } from './services/loader/loader.service';
+import { GetAllPackagesService } from './services/package/get-all-packages.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'spoton';
   opened: boolean = false
 
   successNotification!: string
   errorNotification!: string
+  packageTypes: any [] = []
 
   
 
   constructor(private notificationService:NotificationService,
-    public loaderService:LoaderService){
+    public loaderService:LoaderService,private getAllPackagesService:GetAllPackagesService){
     this.notificationService.getSuccessNotification().subscribe((res) => {
       this.successNotification = res
 
@@ -44,5 +46,16 @@ export class AppComponent {
   clearMsg(){
     this.successNotification =''
     this.errorNotification =''
+  }
+
+
+  ngOnInit(): void {
+    
+    this.getAllPackagesService.getPackages().subscribe((res) => {
+      this.packageTypes = res
+
+      console.log(this.packageTypes)
+
+    })
   }
 }

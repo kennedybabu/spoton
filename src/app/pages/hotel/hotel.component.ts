@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { CreateHotelAmenityComponent } from 'src/app/components/hotels/create-hotel-amenity/create-hotel-amenity.component';
 import { CreateHotelRoomTypeComponent } from 'src/app/components/hotels/create-hotel-room-type/create-hotel-room-type.component';
 import { GetAllHotelAmenitiesService } from 'src/app/services/hotel/get-all-hotel-amenities.service';
+import { GetHotelDetailsService } from 'src/app/services/hotel/get-hotel-details.service';
 
 @Component({
   selector: 'app-hotel',
@@ -15,11 +16,13 @@ export class HotelComponent implements OnInit {
 
   hotelId!: number
   hotelAmenities: any [] = []
+  hotelDetails!: any
   
 
   constructor(private route:ActivatedRoute,
     private dialog:MatDialog,
-    private getAllHotelAmenitiesService:GetAllHotelAmenitiesService){}
+    // private getAllHotelAmenitiesService:GetAllHotelAmenitiesService,
+    private getHotelDetailsService:GetHotelDetailsService){}
 
 
   ngOnInit(): void {
@@ -29,6 +32,10 @@ export class HotelComponent implements OnInit {
         this.hotelId = +params['id']
       }
     )
+
+    this.getHotelDetailsService.getHotelDetails(this.hotelId).subscribe((res) => {
+      this.hotelDetails = res
+    })
 
     // this.getAllHotelAmenitiesService.getAmenities().subscribe((res) => {
     //   this.hotelAmenities = res

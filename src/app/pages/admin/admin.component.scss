@@ -42,6 +42,14 @@
   
 }
 
+.mat-expansion-panel {
+    background-color: #fefefe!important;
+    color: #030303!important;
+
+    span {
+        color: black!important;
+    }
+}
 
 .mat-mdc-tab {
     color: rgb(26, 16, 16)!important;
@@ -50,4 +58,9 @@
 
 span.mdc-tab__text-label {
     color: rgb(26, 16, 16)!important;
+}
+
+
+.specific-class > .mat-expansion-indicator, .mat-expansion-indicator:after {
+    color: red !important;
 }

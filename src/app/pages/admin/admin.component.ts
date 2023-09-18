@@ -20,6 +20,9 @@ import { CreateHotelAmenityComponent } from 'src/app/components/hotels/create-ho
 import { GetAllHotelAmenitiesService } from 'src/app/services/hotel/get-all-hotel-amenities.service';
 import { AddHotelAmenityService } from 'src/app/services/hotel/add-hotel-amenity.service';
 import {types} from './../../package_type'
+import jwtDecode from 'jwt-decode';
+import { GetUserService } from 'src/app/services/auth/get-user.service';
+import { Router } from '@angular/router';
 
 
 export interface UserData {
@@ -72,8 +75,14 @@ export class AdminComponent implements AfterViewInit, OnInit {
   hotelVideo!: any
   hotelAmenities: any [] = []
   selectedAmenitiesIds: any [] = []
-
+  date!: any
   types = types
+
+
+  //current window
+ showingWindow: string = 'settings' 
+
+
 
   constructor(
     private createPackageTypeService: CreatePackageTypeService,
@@ -89,15 +98,32 @@ export class AdminComponent implements AfterViewInit, OnInit {
     private getAllHotelsService: GetAllHotelsService,
     private getAllTransportsService: GetAllTransportsService,
     private getAllHotelAmenitiesService:GetAllHotelAmenitiesService,
-    private addHotelAmenityService:AddHotelAmenityService){
+    private addHotelAmenityService:AddHotelAmenityService,
+    private getUserService:GetUserService,
+    private router:Router){
 
+  }
+
+  changeShowingWindow(string: string){
+    this.showingWindow = string
   }
 
 
   ngOnInit(): void {
+
+    this.date = new Date()
+
+    let item = localStorage.getItem('access') || ''
+
+    console.log(jwtDecode(item))
+
+    this.getUserService.getUser().subscribe((res) => {
+      console.log(res)
+    })
+
+
     this.getAllDestinationsService.getDestinations().subscribe((res) => {
       this.destinations = res
-      console.log(this.destinations)
 
       this.dataSource.data = res
     })
@@ -106,8 +132,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
     this.getAllPackagesService.getPackages().subscribe((res) => {
       this.packageTypes = res
 
-      console.log(this.packageTypes)
-
+      console.log(res)
     })
 
 
@@ -228,6 +253,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
           this.notificationService.sendSuccessNotification('destination created')
           this.destinations = res
           console.log(this.destinations)
+          this.router.navigate(['destinations'])
     
           this.dataSource.data = res
         })
@@ -237,11 +263,9 @@ export class AdminComponent implements AfterViewInit, OnInit {
     })
   }
 
-
+//not wokring, to be removed
   destinationPackageSubmit(){
-    // let destId = parseInt(this.destinationPackageForm.value.destination)
-
-    this.createDestinationPackageService.createPackage(this.destinationPackageForm.value).subscribe((res) => {
+    this.createDestinationPackageService.createPackage(this.destinationPackageForm.value, 1).subscribe((res) => {
       if(res === 'Destination Package created successfully') {
         this.destinationPackageForm.reset()
         this.notificationService.sendSuccessNotification('destination package created')
@@ -267,6 +291,7 @@ export class AdminComponent implements AfterViewInit, OnInit {
       if(res) {
         this.notificationService.sendSuccessNotification('hotel created')
         this.hotelForm.reset()
+        this.router.navigate(['hotels'])
       } else {
         this.notificationService.sendErrorNotification('something went wrong, try again')
       }
@@ -305,8 +330,6 @@ export class AdminComponent implements AfterViewInit, OnInit {
         result.cost = parseInt(result.cost, 10) || 0
         this.transportCosts.push(result)
       }
-      console.log(this.transportCosts)
-
      })
   }
 

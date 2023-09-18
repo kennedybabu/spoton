@@ -1,7 +1,7 @@
 <mat-drawer-container id="wrapper">
     <mat-drawer mode="over" position="end" opened={{opened}}>Drawer content</mat-drawer>
     <mat-drawer-content>
-        <app-navbar (toggleNav)="onToggle($event)" style="color: black;"></app-navbar>
+        <app-navbar [packageTypes]="packageTypes" (toggleNav)="onToggle($event)" style="color: black;"></app-navbar>
         <router-outlet></router-outlet>
 
         <!--error notification -->

@@ -1,0 +1,49 @@
+<div class="conatiner">
+    <div class="row p-3">    
+        <div>
+            <h3 class="mb-0">Add Destination Package</h3>
+            <form [formGroup]="destinationPackageForm" (submit)="destinationPackageSubmit()" class="mx-auto light-text rounded" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+                <div class="form-group">
+                    <label for="name">name</label>
+                    <input formControlName="name" type="text" name="name" id="name" class="form-control">
+                </div>
+            
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input formControlName="description" type="text" name="description" id="description" class="form-control">
+                </div>
+            
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input formControlName="image" type="file" name="image" id="image" class="form-control">
+                </div>  
+            
+                <div class="form-group">
+                    <label for="video">Video</label>
+                    <input formControlName="video" type="file" name="video" id="video" class="form-control">
+                </div>  
+            
+                <div class="form-group">
+                    <label for="overview">Overview</label>
+                    <input formControlName="overview" type="text" name="overview" id="overview" class="form-control">
+                </div>
+            
+                <div class="form-group">
+                    <label for="company">company</label>
+                    <input formControlName="company" type="text" name="company" id="company" class="form-control">
+                </div>
+            
+<!--                
+                <div class="form-group">
+                    <label>Destination</label>
+                    <select formControlName="destination" class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option *ngFor="let destination of destinations" [value]="destination.id">{{destination.name}}</option>
+                    </select>
+                </div> -->
+            
+                <button class="my-3" mat-raised-button color="primary">Create Package Type</button>   
+            </form>            
+        </div>       
+
+</div>

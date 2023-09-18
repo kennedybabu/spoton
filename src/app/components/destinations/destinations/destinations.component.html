@@ -1,23 +1,20 @@
-<div class="form-wrapper my-3">
+<!-- <div class="form-wrapper my-3">
     <input type="text" (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
       
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
       
-          <!-- ID Column -->
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
             <td mat-cell *matCellDef="let row"> {{row.name}} </td>
           </ng-container>
       
-          <!-- Progress Column -->
           <ng-container matColumnDef="description">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
             <td mat-cell *matCellDef="let row"> {{row.description}} </td>
           </ng-container>                                 
    
       
-          <!-- Fruit Column -->
           <ng-container matColumnDef="img">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
             <td mat-cell *matCellDef="let row"> 
@@ -30,7 +27,6 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       
-          <!-- Row shown when there is no matching data. -->
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
           </tr>
@@ -38,4 +34,36 @@
       
         <mat-paginator [pageSizeOptions]="[10]" aria-label="Select page of users"></mat-paginator>
       </div>   
+</div> -->
+
+
+<div class="container-fluid">
+  <h2 class="dark-text">Destinations</h2>
+  <div class="row">
+    <table class="table table-hover col-md-8 mx-auto p-3">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr (click)="viewDestination(dest.id)" *ngFor="let dest of destinations;let i = index" style="cursor: pointer;">
+          <th><span>{{i + 1}}</span>. {{dest.name}}</th>
+          <td class="light-text">{{dest.description}}</td>
+          <td>
+            <i class="bi bi-star-fill" style="color: orange;"></i>
+            <i class="bi bi-star-fill" style="color: orange;"></i>
+            <i class="bi bi-star-fill" style="color: orange;"></i>
+            <i class="bi bi-star-fill" style="color: orange;"></i>
+          </td>
+          <td (click)="openDialog(dest.id)">
+            <span style="font-size: 1.2rem;"><i class="bi bi-sliders2 light-text"></i></span>
+          </td>
+        </tr>      
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,0 +1,13 @@
+.container {
+    .row {
+        .tile {
+            border: 1px solid rgb(153, 151, 151);
+            height: 60px;
+            background-color: red;
+
+            p {
+                background-color: red;
+            }
+        }
+    }
+}

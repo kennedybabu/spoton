@@ -3,16 +3,16 @@
         <div class="header">
             <div class="overlay">
                 <small style="letter-spacing: 2px;">Resort & Spa Hotel</small> 
-                <h1 class="my-3">Stay With Us, Feel At Home</h1>
+                <h1 class="my-3">{{hotelDetails?.name}}</h1>
                 <button class="my-3">Explore</button>
             </div>  
+
             <div class="abs-btn">
                 <button (click)="openHotelAmenityDialog()" mat-raised-button color="warn">Add Hotel Amenity</button>
                 <button (click)="openDialog()" mat-raised-button color="warn" class="mx-2">Add Room Type</button>
                 <button mat-raised-button color="warn" (click)="openDialog()">
                     <i style="font-size: 1.3rem;" class="bi bi-images"></i> Add Hotel Image
                 </button>
-
             </div>        
         </div>
 
@@ -105,11 +105,13 @@
             </div>
 
             <div class="row pb-5" id="tiles">
+                <div *ngIf="hotelAmenities.length < 0" style="padding-left: 100px;">
+                    <div (click)="openHotelAmenityDialog()" id="cover" style="width: 263px;height: 263px;background-color: #eeeeee;display: flex;align-items: center;justify-content: center;">
+                        <i style="color: #b4b4b4;font-size: 2rem;" class="bi bi-plus-lg"></i>
+                    </div>
+                </div>
                 <div class="d-flex gap-3 align-items-center justify-content-center" >
-                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
-                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
-                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
-                    <app-hotel-amenity-tile></app-hotel-amenity-tile>
+                    <app-hotel-amenity-tile *ngFor="let amenity of hotelDetails?.amenities;let i = index" [amenity]="amenity" [i]="i"></app-hotel-amenity-tile>
                 </div>
             </div>
 

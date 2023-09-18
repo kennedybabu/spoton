@@ -56,5 +56,4 @@ export class HotelsComponent implements OnInit, AfterViewInit {
     this.router.navigate(['hotel', id])
   }
 
-
 }

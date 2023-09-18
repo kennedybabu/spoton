@@ -52,6 +52,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CreateHotelAmenityComponent } from './components/hotels/create-hotel-amenity/create-hotel-amenity.component';
 import { HotelAmenitiesComponent } from './components/hotels/hotel-amenities/hotel-amenities.component';
 import { RemoveSpacePipe } from './remove-space-pipe';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CreateDestPackagesComponent } from './components/destinations/create-dest-packages/create-dest-packages.component';
+import { DestinationComponent } from './pages/destination/destination.component';
+import { CreatePackageOptionComponent } from './components/package/create-package-option/create-package-option.component';
 
 
 @NgModule({
@@ -86,6 +90,9 @@ import { RemoveSpacePipe } from './remove-space-pipe';
     PackageTileComponent,
     CreateHotelAmenityComponent,
     HotelAmenitiesComponent,
+    CreateDestPackagesComponent,
+    DestinationComponent,
+    CreatePackageOptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,7 +115,8 @@ import { RemoveSpacePipe } from './remove-space-pipe';
     MatTableModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

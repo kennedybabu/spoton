@@ -1,14 +1,5 @@
 <div class="container-fluid">
-    <div class="row" style="margin-top: 100px;">
-        <!-- <div class="col-md-2 p-3" style="height: auto;border-right: 1px solid #c2c1c1;">
-            <h3 style="font-size: 1.3rem;" class="dark-text">Admin Page</h3> 
-            <div class="row p-3">
-          
-
-
-            </div>
-        </div> -->
-
+    <!-- <div class="row" style="margin-top: 100px;">
         <div class="col-md-12 px-0">            
             <mat-tab-group backgroundColor="accent"> 
                 <mat-tab label="Destination" class="dark-text">
@@ -123,15 +114,6 @@
                                         </label>
                                     </div>
 
-                                    <!-- <div class="form-group">
-                                        <label for="ow">Cost</label>
-                                        <input formControlName="cost" type="text" name="cost" id="cost" class="form-control">
-                                    </div> -->
-                                    
-                                    <!-- <select class="form-select my-3" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
-                                    </select> -->
-                                 
                                     <button class="my-3" mat-raised-button color="primary">Create Package Type</button>   
                                 </form>
                             </div>
@@ -202,7 +184,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4">
-                                <form [formGroup]="destinationPackageForm" (submit)="destinationPackageSubmit()" class="mx-auto light-text rounded py-5" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+                                <form [formGroup]="destinationPackageForm" (submit)="destinationPackageSubmit()" class="mx-auto light-text rounded" style="max-width: 570px;background-color: rgb(255, 255, 255);">
                                     <div class="form-group">
                                         <label for="name">name</label>
                                         <input formControlName="name" type="text" name="name" id="name" class="form-control">
@@ -276,6 +258,192 @@
                     </div>
                 </mat-tab>
             </mat-tab-group>            
+        </div>
+    </div> -->
+
+    <div class="row" style="margin-top: 100px; padding-top: 1rem;">
+        <div class="row">
+            <div>
+                <small class="light-text">{{date | date:'fullDate'}}</small>
+                <p class="mb-0 dark-text">Afternoon, White</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="p-1">
+                <div (click)="changeShowingWindow('settings')" class="p-2 my-1" style="border: 1px solid rgb(201, 201, 201);">
+                    <p class="mb-0 dark-text" style="cursor: pointer;">Settings</p>
+                </div>
+                <div (click)="changeShowingWindow('hotels')" class="p-2 my-1" style="border: 1px solid rgb(201, 201, 201);">
+                    <p class="mb-0 dark-text" style="cursor: pointer;">Hotels</p>
+                </div>
+
+                <div (click)="changeShowingWindow('destinations')" class="p-2 my-1" style="border: 1px solid rgb(201, 201, 201);">
+                    <p class="mb-0 dark-text" style="cursor: pointer;">Destinations</p>
+                </div>
+
+                 <div (click)="changeShowingWindow('amenities')" class="p-2 my-1" style="border: 1px solid rgb(201, 201, 201);">
+                    <p class="mb-0 dark-text" style="cursor: pointer;">Amenities</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <mat-accordion *ngIf="showingWindow === 'settings'" style="padding: 0;background-color: #fefefe;border-radius: 0;">
+                <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <p class="mb-0 dark-text">Global Settings</p>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <h3 class="mb-0 light-text">create destination and transport</h3>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="text-center">Create Destination</h3>
+                            <hr>
+                            <form [formGroup]="destinationForm" (submit)="destinationSubmit()" class="mx-auto light-text rounded" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+                                <div class="form-group">
+                                    <label for="name">name</label>
+                                    <input formControlName="name" type="text" name="name" id="name" class="form-control">
+                                </div>
+                    
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input formControlName="description" type="text" name="description" id="description" class="form-control">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input (change)="onFileSelected($event)" type="file" name="image" id="image" class="form-control">
+                                </div>    
+                                
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select formControlName="type" class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option *ngFor="let package of packageTypes" [value]="package.id">{{package.name}}</option>
+                                    </select>
+                                </div>
+                                <button class="my-3" mat-raised-button color="primary">Create Destination</button>   
+                            </form>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <h3 class="text-center">Create Transport</h3>
+                            <hr>
+                            <form [formGroup]="transportForm" (submit)="transportFormSubmit()">
+    
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" type="text" formControlName="name">
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input class="form-control" type="text" formControlName="description">
+                                </div>
+    
+                                <div (click)="openDialog()" class="my-1" mat-raised-button color="primary">Add Cost</div>   
+    
+                                <div class="form-group">
+                                    <label for="transport_type">Transport Type</label>
+                                    <select formControlName="transport_type" class="form-select" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="TR">Train</option>
+                                        <option value="BS">Bus</option>
+                                        <option value="FL">Flight</option>
+                                        <option value="TV">Tour Van</option>
+                                    </select>
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="owner">Owner</label>
+                                    <input class="form-control" type="text" formControlName="owner">
+                                </div>
+    
+                                <button class="my-3" mat-raised-button color="primary">Create Transport</button>   
+    
+                            </form>
+                            <!-- <h3 class="text-center">Create Amenity</h3>
+                            <form [formGroup]="amenityForm" (submit)="onSubmit()" style="max-width: 570px;">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" formControlName="name" class="form-control">
+                                </div>
+                    
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" formControlName="description" class="form-control">
+                                </div>
+                    
+                                <button class="my-3"  mat-raised-button color="primary">Add Amenity</button>
+                            </form> -->
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+    
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <p class="mb-0 dark-text">Hotel Settings</p>
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            <p class="mb-0 light-text">
+                                Create Hotel and Add Settings
+                            </p>
+    
+                            
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 class="text-center">Add Hotel</h3>
+                            <form [formGroup]="hotelForm" (submit)="hotelFormSubmit()" class="mx-auto light-text rounded py-5" style="max-width: 570px;background-color: rgb(255, 255, 255);">
+                                <div class="form-group">
+                                    <label for="name">name</label>
+                                    <input formControlName="name" type="text" name="name" id="name" class="form-control">
+                                </div>
+                    
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input formControlName="description" type="text" name="description" id="description" class="form-control">
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="cost">Cost</label>
+                                    <input formControlName="cost" type="text" name="cost" id="cost" class="form-control">
+                                </div>
+    
+                                <div *ngFor="let amenity of hotelAmenities" class="d-flex my-1 justify-content-between">
+                                    <label>
+                                        <input (change)="toggleSelection(amenity)" type="checkbox" [name]="amenity.id" [value]="amenity"> 
+                                        {{amenity.name}}
+                                    </label>
+                                </div>
+    
+                                <button class="my-3" mat-raised-button color="primary">Create Hotel</button>   
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            
+                        </div>
+                    </div>
+    
+                </mat-expansion-panel>
+            </mat-accordion>
+
+            <div *ngIf="showingWindow === 'hotels'">
+                <app-hotels></app-hotels>
+            </div>
+
+              <div *ngIf="showingWindow === 'destinations'">
+                <app-destinations></app-destinations>
+            </div>
+
+            <div *ngIf="showingWindow === 'amenities'">
+                <app-hotel-amenities></app-hotel-amenities>
+            </div>
         </div>
     </div>
 </div>

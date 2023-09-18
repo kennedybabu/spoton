@@ -1,19 +1,19 @@
-<div class="container-fluid shadow">
+<div class="container-fluid shadow" style="z-index: 200;">
     <div class="row">
         <div class="col-6 col-lg-2">
             <img routerLink="/"  id="logo" style="width: auto;height: 50px;cursor: pointer;" src="../../../assets/images/spoton.png" alt="logo">
         </div>
 
-        <div class="col-md-6 col-lg-3" id="nav-list">
-            <div *ngFor="let link of packageTypes">
-                <button mat-button color="black" [matMenuTriggerFor]="link.name">{{link.name }}</button>
-                <mat-menu #home="matMenu">
+        <div *ngIf="packageTypes" class="col-md-6 col-lg-3" id="nav-list">
+            <!-- <div *ngFor="let link of packageTypes">
+                <button mat-button color="black" [matMenuTriggerFor]="link.name">{{link.name | removeSpaces }}</button>
+                <mat-menu #[link.name]="matMenu">
                   <button mat-menu-item>Tour Packages</button>
                   <button mat-menu-item>Gallery</button>
                 </mat-menu>
-            </div>
+            </div> -->
 
-            <!-- <div>
+            <div>
                 <button mat-button color="black" [matMenuTriggerFor]="destination">Destination</button>
                 <mat-menu #destination="matMenu">
                   <button (click)="searchTrips('africa-holidays')" mat-menu-item>Africa Holidays</button>
@@ -74,13 +74,15 @@
 
             <div>
                 <button (click)="searchTrips('team-building')" mat-button color="black">TeamBuilding</button>
-            </div> -->
+            </div>
         </div>
 
         <div class="col-6 col-lg-2" id="end">
             <button (click)="toggle()" id="toggleButton"><i style="font-size: 2rem;" class="bi bi-list"></i></button>
-            <button (click)="openDialog()" openDialog id="login-btn" mat-raised-button color="primary">Book</button> | 
-            <button routerLink="login" openDialog id="login-btn" mat-raised-button color="primary">Login</button>
+            <!-- <button (click)="openDialog()" openDialog id="login-btn" mat-raised-button color="primary">Book</button> |  -->
+            <button  routerLink="login" openDialog id="login-btn" mat-raised-button color="primary">Login</button> 
+            <!-- <button (click)="authService.logout" openDialog id="login-btn" mat-raised-button color="primary">Logout</button> -->
+
         </div>
     </div>
 </div>

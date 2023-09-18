@@ -1,8 +1,9 @@
 import { GetAllPackagesService } from './../../services/package/get-all-packages.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { BookTourComponent } from '../book-tour/book-tour.component';
+import { AuthService } from 'src/app/auth/auth.service';
 
 
 
@@ -15,11 +16,14 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private router:Router, private dialog: MatDialog,
-    private GetAllPackagesService:GetAllPackagesService){}
+    private GetAllPackagesService:GetAllPackagesService, public authService:AuthService){
+      console.log(this.packageTypes)
+    }
 
 
-  packageTypes: any [] = []
   @Output() toggleNav: EventEmitter<boolean> = new EventEmitter()
+  @Input() packageTypes: any
+
 
   toggle(){
     this.toggleNav.emit(true)
@@ -32,11 +36,10 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.GetAllPackagesService.getPackages().subscribe((res) => {
-      this.packageTypes = res
+    // this.GetAllPackagesService.getPackages().subscribe((res) => {
+    //   this.packageTypes = res
+    // })
 
-      console.log(res)
-    })
   }
 
 
@@ -50,5 +53,7 @@ export class NavbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+
+  
 
 }

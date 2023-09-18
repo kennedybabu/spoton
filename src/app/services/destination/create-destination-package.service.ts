@@ -9,7 +9,7 @@ export class CreateDestinationPackageService {
 
   constructor(private http:HttpClient) { }
 
-  createPackage(formValue:any): Observable<any> {
+  createPackage(formValue:any, destinationId: any): Observable<any> {
 
 
     const formData = new FormData()
@@ -20,11 +20,7 @@ export class CreateDestinationPackageService {
     formData.append("video", formValue.video)
     formData.append("overview", formValue.overview)
     formData.append("company", formValue.company)
-    formData.append("destination", formValue.destination)
-
-    const destinationId = parseInt(formValue.destination, 10)
-    formData.append('destination', destinationId.toString())
-
+    formData.append("destination", destinationId)
 
     return this.http.post('http://109.123.254.230:8888/services/destinationpackage/create', formData)
   }

@@ -8,6 +8,9 @@ import { BookingComponent } from './pages/booking/booking.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { RoleBaseGuard } from './_guard/role-base.guard';
 import { HotelComponent } from './pages/hotel/hotel.component';
+import { HotelsComponent } from './components/hotels/hotels.component';
+import { DestinationsComponent } from './components/destinations/destinations/destinations.component';
+import { DestinationComponent } from './pages/destination/destination.component';
 
 
 
@@ -16,10 +19,13 @@ const routes: Routes = [
   {path:'landingpage', component: LandingpageComponent},
   {path:'trip-search/:type', component: TripSearchComponent},
   {path:'login', component:LoginComponent},
-  {path:'booking', component: BookingComponent},
+  {path:'booking/:id', component: BookingComponent},
   {path: 'admin', component: AdminComponent, canActivate: [RoleBaseGuard]},
   {path:'signup', component: SignupComponent},
   {path: 'hotel/:id', component: HotelComponent},
+  {path:'hotels', component: HotelsComponent},
+  {path:'destination/:id', component: DestinationComponent},
+  {path:'destinations', component: DestinationsComponent},
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
